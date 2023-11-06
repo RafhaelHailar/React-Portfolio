@@ -1,5 +1,5 @@
 import NavigationBar from "./components/NavigationBar";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { HashRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 
 import Profile from "./pages/Profile";
 import Posts from "./components/Profile/Posts";
@@ -8,7 +8,7 @@ import Posts from "./components/Profile/Posts";
 function App() {
   return (
     <div className="App" style={{height: '200vh'}}>
-        <BrowserRouter>
+        <Router>
             <NavigationBar></NavigationBar>
             <Routes>
               <Route path="/" element={<Navigate to="/rafhael/"></Navigate>}></Route>
@@ -19,7 +19,7 @@ function App() {
                 <Route path="contacts" element={<h1>HELLO WORLD!</h1>}></Route>
               </Route>
             </Routes>
-        </BrowserRouter>
+        </Router>
     </div>
   );
 }
