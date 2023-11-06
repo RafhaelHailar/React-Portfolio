@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: Segoe UI Historic, Segoe UI, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #18191A;
+}
+
+code {
+/*   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace; */
+}
+
+:root {
+  --blueish: #0866FF;
+}
+
+.nav-links a{
+  padding: .6rem 2.6rem;
+  margin: 0 .25rem;
+}
+
+a {
+  border-radius: 5px;
+}
+
+a:not(.active):hover,.night-btn:hover,.nav-actions button:hover,button:hover {
+  background: rgba(255,255,255,.2);
+}
+
+.night-btn {
+  background: #3A3B3C;
+  padding: .5rem .7rem;
+  border-radius: 0.25rem;
+}
+
+.nav-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .4rem;
+}
+
+.nav-actions button {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #3A3B3C;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile-routes a.active {
+  color: var(--blueish) !important;
+  position: relative;
+}
+
+.profile-routes a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.25rem; /* Tailwind py-1 value*/
+  width: 100%;
+  height: 0.15rem;
+  background: var(--blueish);
+}
+
+.nav-actions .profile {
+  width: 2.3em;
+  height: 2.3em;
+}
+
+.profile-routes {
+  border-top: 1px solid rgba(255,255,255,.1);
+}
+
+.profile-routes a {
+  padding: .8rem .75rem;
+}
+
+.icon-filter {
+
+}
+
+.bio-intro > li  {
+  display: flex;
+  column-gap: .5rem;
+  margin: .9rem 0;
+}
+
+.bio-intro > li  img {
+  -webkit-filter: invert(59%) sepia(11%) saturate(200%) saturate(135%) hue-rotate(176deg) brightness(96%) contrast(94%);
+  transform: scale(0.9);
+}
