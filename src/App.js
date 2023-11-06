@@ -8,9 +8,8 @@ import Posts from "./components/Profile/Posts";
 function App() {
   return (
     <div className="App" style={{height: '200vh'}}>
-        <Router>
-            <NavigationBar></NavigationBar>
-            <Routes>
+          <NavigationBar></NavigationBar>
+          <Routes>
               <Route path="/" element={<Navigate to="/rafhael/"></Navigate>}></Route>
               <Route path="/rafhael" element={<Profile></Profile>}>
                 <Route path="posts" element={<Posts></Posts>}></Route>
@@ -18,8 +17,7 @@ function App() {
                 <Route path="about" element={<h1>HELLO WORLD!</h1>}></Route>
                 <Route path="contacts" element={<h1>HELLO WORLD!</h1>}></Route>
               </Route>
-            </Routes>
-        </Router>
+          </Routes>
     </div>
   );
 }
