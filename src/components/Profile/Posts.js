@@ -59,9 +59,20 @@ const Posts = () => {
                             <span>Filters</span>
                         </button>
                     </div>
-                   <PostItem></PostItem>
-                   <PostItem></PostItem>
-                   <PostItem></PostItem>
+                   <PostItem 
+                        description=" I am handsome man. Get answers to frequently asked questions about the Poetry Foundation’s online archive, including permissions and suggestions.Get answers to frequently asked questions about the Poetry Foundation’s online archive, including permissions and suggestions." 
+                        date="September 2, 2020" 
+                        media="https://visit.museum.wa.gov.au/sites/default/files/styles/large_/public/2022-12/wamaritimemuseum-seamonsters-header-2000px.jpg?h=5f3ce5bb&itok=NV4bWpD6">
+                    </PostItem>
+                   <PostItem 
+                        date="November 1, 2023"
+                        description="Trying to make a horror game in pure js"
+                    ></PostItem>
+                   <PostItem 
+                        date="November 8, 2023"
+                        description="Boreeddd"
+                        media="https://i.imgur.com/4VAD9Pw.jpeg"
+                    ></PostItem>
                 </div>
             </div>
         </div>

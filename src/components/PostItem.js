@@ -1,6 +1,6 @@
 import FBIcons from "./FBIcons";
 
-const PostItem = () => {
+const PostItem = ({date,description,media}) => {
     return (
         <div className="bg-blackish rounded py-1.5">
             <div className="flex justify-between px-3">
@@ -14,7 +14,7 @@ const PostItem = () => {
                     </div>
                     <div className="text-white">
                         <div className="text-sm font-bold">Rafhael Hailar</div>
-                        <div className="text-xs">September 5, 2020</div>
+                        <div className="text-xs">{date}</div>
                     </div>
                 </div>  
                 <div>
@@ -24,13 +24,16 @@ const PostItem = () => {
                 </div>
             </div>
             <div className="text-white px-3 pb-2" style={{fontSize: ".8rem"}}>
-                I am handsome man. Get answers to frequently asked questions about the Poetry Foundation’s online archive, including permissions and suggestions.Get answers to frequently asked questions about the Poetry Foundation’s online archive, including permissions and suggestions.
+               {description}
             </div>
-            <div>
-                <button>
-                    <img src="https://visit.museum.wa.gov.au/sites/default/files/styles/large_/public/2022-12/wamaritimemuseum-seamonsters-header-2000px.jpg?h=5f3ce5bb&itok=NV4bWpD6" width="100%" />
-                </button>
-            </div>
+            {
+                media &&
+                <div>
+                    <button>
+                        <img src={media} width="100%" />
+                    </button>
+                </div>
+            }
             <div className="px-3 text-grayte text-xs ">
                 <div className="flex justify-between pb-2 pt-1">
                     <div className="flex gap-0.5">
