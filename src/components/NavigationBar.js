@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const NavigationBar = () => {
     return (
-        <div className="sticky top-0 w-full bg-blackish px-3 py-1 flex justify-between z-10" style={{boxShadow: "0 .5px .1px rgba(255,255,255,.15)"}}>
+        <div className="sticky top-0 w-full bg-blackish px-3 py-1 flex justify-between z-10 relative overflow-hidden" style={{boxShadow: "0 .5px .1px rgba(255,255,255,.15)"}}>
             <div className='flex justify-center items-center gap-2 '>
                 <Link to="/home">
                     <FBIcons icon="fbIconModified" color="none" size="2em" />
@@ -40,7 +40,7 @@ const NavigationBar = () => {
                     <FBIcons icon="notification" size="1em" color="white"></FBIcons>
                 </button>
                 <button className='profile'>
-                    <img src="https://makeupeffects.weebly.com/uploads/1/2/4/3/12434022/6232331.jpg" width="100%"/>
+                    <img src="https://makeupeffects.weebly.com/uploads/1/2/4/3/12434022/6232331.jpg" width="100%" alt='user profile'/>
                 </button>
             </div>
         </div>

@@ -7,7 +7,7 @@ import Posts from "./components/Profile/Posts";
 
 function App() {
   return (
-    <div className="App" style={{height: '200vh'}}>
+    <div className="App">
           <NavigationBar></NavigationBar>
           <Routes>
               <Route path="/" element={<Navigate to="/rafhael/"></Navigate>}></Route>
