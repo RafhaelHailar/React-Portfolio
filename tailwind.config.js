@@ -5,6 +5,7 @@ module.exports = {
       "./src/components/NavigationBar.js",
       "./src/pages/Profile.js",
       "./src/components/Profile/Posts.js",
+      "./src/components/Profile/PostItem.js",
     ],
   theme: {
     extend: {
