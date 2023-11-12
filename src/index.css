@@ -31,7 +31,7 @@ a {
 a:not(.active):hover,
 .night-btn:hover,
 .nav-actions button:hover,
-button:hover {
+button:not(.no-hover):hover {
   box-shadow:inset 0 0 100px 100px rgba(255,255,255,.1);
 }
 
@@ -107,4 +107,8 @@ button:hover {
   -webkit-filter: invert(59%) sepia(11%) saturate(200%) saturate(135%) hue-rotate(176deg) brightness(96%) contrast(94%);
   filter: invert(59%) sepia(11%) saturate(200%) saturate(135%) hue-rotate(176deg) brightness(96%) contrast(94%);
   transform: scale(0.9);
+}
+
+.preview-right::-webkit-scrollbar {
+  display: none;
 }

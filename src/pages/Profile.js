@@ -9,16 +9,16 @@ const Profile = () => {
             <div className="bg-blackish p-x70" >
                 <button>
                     <div className="bg-black rounded overflow-hidden" style={{height: "23rem"}}>
-                        <img src="https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg" width="100%" />
+                        <img src="https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg" width="100%" alt="cover"/>
                     </div>
                 </button>
                 <div className="px-7">
                     <div className="h-20 flex justify-between  items-end">
                         <div className="flex justify-between items-end gap-4">
-                            <button>
+                            <button className="rounded-full overflow-hidden">
                                 <div className="rounded-full bg-black" style={{padding: "0.2rem"}}>
                                     <div className="bg-lime-600 rounded-full overflow-hidden flex align-center justify-center" style={{width: "8.5rem",height: "8.5rem"}}>
-                                        <img src="https://images.ctfassets.net/ww1ie0z745y7/2ZLgATkZvsbHjsnrPRzBYu/e592901dccc526622e39898e9271a7ef/Goldfish.jpeg?q=75" width="100%"/>
+                                        <img src="https://images.ctfassets.net/ww1ie0z745y7/2ZLgATkZvsbHjsnrPRzBYu/e592901dccc526622e39898e9271a7ef/Goldfish.jpeg?q=75" width="100%" alt="Rafhael Hailar"/>
                                     </div>
                                 </div>
                             </button>
@@ -50,9 +50,9 @@ const Profile = () => {
                         <div className="flex">
                             {
                                 //Routes
-                                ["posts","projects","about","contacts"].map(paths => {
+                                ["posts","projects","about","contacts"].map((paths,index) => {
                                     const pathName = paths[0].toUpperCase() + paths.slice(1);
-                                    return <Link className={paths == currentLocation ? "active" : ""} to={"./" + paths}>{pathName}</Link>;
+                                    return <Link key={index} className={paths === currentLocation ? "active" : ""} to={"./" + paths}>{pathName}</Link>;
                                 })
                             }
                         </div>
@@ -65,7 +65,7 @@ const Profile = () => {
                 </div>
             </div>
             <Outlet/>
-            <Navigate to={currentLocation == "" ? "./posts" : `./${currentLocation}`}></Navigate>
+            <Navigate to={currentLocation === "" ? "./posts" : `./${currentLocation}`}></Navigate>
         </>
     );
 }

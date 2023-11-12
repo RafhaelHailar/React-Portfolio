@@ -4,9 +4,10 @@ import FBIcons from './FBIcons';
 import { Link } from 'react-router-dom';
 
 const NavigationBar = () => {
+   
     return (
         <div className="sticky top-0 w-full bg-blackish px-3 py-1 flex justify-between z-10 relative overflow-hidden" style={{boxShadow: "0 .5px .1px rgba(255,255,255,.15)"}}>
-            <div className='flex justify-center items-center gap-2 '>
+            <div className='flex justify-center items-center gap-2'>
                 <Link to="/home">
                     <FBIcons icon="fbIconModified" color="none" size="2em" />
                 </Link>

@@ -6,6 +6,8 @@ module.exports = {
       "./src/pages/Profile.js",
       "./src/components/Profile/Posts.js",
       "./src/components/PostItem.js",
+      "./src/components/PostStructure.js",
+      "./src/pages/Preview.js"
     ],
   theme: {
     extend: {
@@ -14,10 +16,14 @@ module.exports = {
         grayte: "#B0B3B8",
         blackish: "#242526",
         blackite: "#18191A",
+        blackwash: "rgba(0,0,0,0.4)",
         blueish: "#0866FF"
       },
       padding: {
         "x70": "0 16.7rem 0 16rem"
+      },
+      spacing: {
+        "4/5": "80%"
       }
     },
   },

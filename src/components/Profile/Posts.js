@@ -1,5 +1,6 @@
 import FBIcons from "../FBIcons";
 import PostItem from "../PostItem";
+import {total} from "../../posts.js";
 
 const Posts = () => {
     return (
@@ -13,25 +14,25 @@ const Posts = () => {
                         </div>
                         <ul className="text-xs text-gray-300 bio-intro font-bold">
                             <li>
-                                <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yS/r/jV4o8nAgIEh.png"/>
+                                <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yS/r/jV4o8nAgIEh.png" alt="school"/>
                                 <span>
                                     Studied at <span className="text-white">Mamatid Senior High School</span>
                                 </span>
                             </li>
                             <li>
-                                <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yS/r/jV4o8nAgIEh.png"/>
+                                <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yS/r/jV4o8nAgIEh.png" alt="school"/>
                                 <span>
                                     Studied at <span className="text-white">Kodego BootCamp</span>
                                 </span>
                             </li>
                             <li>
-                                <img src="https://static.xx.fbcdn.net/rsrc.php/v3/y5/r/VMZOiSIJIwn.png"/>
+                                <img src="https://static.xx.fbcdn.net/rsrc.php/v3/y5/r/VMZOiSIJIwn.png" alt="house"/>
                                 <span>
                                     Lives in <span className="text-white">Cabuyao, Laguna</span>
                                 </span>
                             </li>
                             <li>
-                                <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yc/r/-e1Al38ZrZL.png"/>
+                                <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yc/r/-e1Al38ZrZL.png" alt="location"/>
                                 <span>
                                     From <span className="text-white">Cabuyao, Laguna</span>
                                 </span>
@@ -39,9 +40,9 @@ const Posts = () => {
                         </ul>
                         <div className="text-xs font-bold flex gap-2 flex-wrap">
                             {
-                                ['html','css','js','bootstrap','tailwind','nodejs','react','php','mysql','mongodb','figma'].map(tool => {
+                                ['html','css','js','bootstrap','tailwind','nodejs','react','php','mysql','mongodb','figma'].map((tool,index) => {
                                     return (
-                                        <button className="flex items-center py-1.5 px-3.5 gap-1 rounded-full" style={{border: "1px solid rgba(255,255,255,.1)"}}>
+                                        <button key={index} className="flex items-center py-1.5 px-3.5 gap-1 rounded-full" style={{border: "1px solid rgba(255,255,255,.1)"}}>
                                             <FBIcons icon={tool} size="1rem"></FBIcons>
                                             {tool.toUpperCase()}
                                         </button>
@@ -59,20 +60,11 @@ const Posts = () => {
                             <span>Filters</span>
                         </button>
                     </div>
-                   <PostItem 
-                        description=" I am handsome man. Get answers to frequently asked questions about the Poetry Foundation’s online archive, including permissions and suggestions.Get answers to frequently asked questions about the Poetry Foundation’s online archive, including permissions and suggestions." 
-                        date="September 2, 2020" 
-                        media="https://visit.museum.wa.gov.au/sites/default/files/styles/large_/public/2022-12/wamaritimemuseum-seamonsters-header-2000px.jpg?h=5f3ce5bb&itok=NV4bWpD6">
-                    </PostItem>
-                   <PostItem 
-                        date="November 1, 2023"
-                        description="Trying to make a horror game in pure js"
-                    ></PostItem>
-                   <PostItem 
-                        date="November 8, 2023"
-                        description="Boreeddd"
-                        media="https://i.imgur.com/4VAD9Pw.jpeg"
-                    ></PostItem>
+                    {
+                        new Array(total).fill(null).map((_,id) => {
+                            return <PostItem id={id + 1} key={id}></PostItem>
+                        })
+                    }
                 </div>
             </div>
         </div>
