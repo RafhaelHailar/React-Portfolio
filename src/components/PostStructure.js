@@ -1,9 +1,22 @@
 import FBIcons from "./FBIcons";
 import {posts} from "../posts";
 import { Link } from "react-router-dom";
+import { useEffect, useRef } from "react";
 
 const PostStructure = ({id,noMedia}) => {
-    const {date,description,media} = posts[id];
+    let {date,description,media} = posts[id];
+    const descriptor = useRef();
+
+    useEffect(
+        () => {
+            description = description.replaceAll("\n",'<br/>');
+            description = description.replace(/\[([^\]]+)\]\(([^)]+)\)/g,(_,$1,$2) => {
+                return `<a href='${$1}' target='_blank'>${$2}</a>`;
+            });
+            descriptor.current.innerHTML = description;
+        },[]
+    );
+
     return (
         <>
               <div className="flex justify-between px-3">
@@ -26,14 +39,14 @@ const PostStructure = ({id,noMedia}) => {
                     </button>
                 </div>
             </div>
-            <div className="text-white px-3 pb-2" style={{fontSize: ".8rem"}}>
-               {description}
+            <div ref={descriptor}  className="text-white px-3 pb-2 post-descriptor" style={{fontSize: ".8rem"}}>
+
             </div>
             {
                 media && !noMedia &&
-                <div>
+                <div className="max-h-screen overflow-hidden">
                     <Link to={"/preview?id=" + id}>
-                        <img src={media} width="100%" alt="media post" />
+                        <img src={media} className="w-full" alt="media post" />
                     </Link>
                 </div>
             }

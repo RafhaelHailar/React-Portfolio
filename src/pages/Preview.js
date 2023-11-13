@@ -1,11 +1,12 @@
 import FBIcons from "../components/FBIcons";
-import { Link, useSearchParams, Navigate } from "react-router-dom";
+import { Link, useSearchParams, Navigate, useNavigate } from "react-router-dom";
 import PostStructure from "../components/PostStructure";
 import { posts } from "../posts";
 
 const Preview = () => {
     const [searchParams] = useSearchParams();
     const id = searchParams.get("id");
+    const navigate = useNavigate();
 
     if (id === "" || id === null || posts[id].media === "") return <Navigate to="/"></Navigate>
     return (
@@ -13,10 +14,10 @@ const Preview = () => {
             <div className="w-4/5 absolute top-0 z-50 h-full bg-black flex justify-center items-center overflow-hidden">
                 <div className="px-3 py-2 absolute top-0 left-0 flex justify-between">
                     <div className="flex items-center gap-2">
-                        <button className="w-8 h-8 rounded-full flex justify-center items-center bg-blackwash">
+                        <button className="w-8 h-8 rounded-full flex justify-center items-center bg-blackwash" onClick={() => navigate(-1)}>
                             <FBIcons icon="close" size="0.8"></FBIcons>
                         </button>
-                        <Link to="/rafhael">
+                        <Link to="/">
                                 <FBIcons icon="fbIconModified" size="2em"></FBIcons>
                         </Link>
                     </div>
@@ -25,7 +26,14 @@ const Preview = () => {
                     </div>
                 </div>
                 <div>
-                    <img src={posts[id].media} alt="post"/>
+                    <img src={posts[id].media} alt="post" onLoad={(event) => {
+                        const image = event.target;
+                        const width = image.width;
+                        const height = image.height;
+
+                        const addClass = (height > width) ? "h-screen" : "w-screen";
+                        image.classList.add(addClass);
+                    }}/>
                 </div>
             </div>
             <div className="absolute left-4/5 w-1/5 pt-3 text-grayte bg-blackish overflow-scroll preview-right" style={{height: "94vh"}}>
