@@ -33,10 +33,12 @@ const Profile = () => {
                         </div>
                         <div className="h-11">
                             <div className="text-white text-xs font-semibold flex gap-1.5">
-                                <button className="bg-blueish px-2.5 py-1.5 rounded flex items-center gap-1">
-                                    <FBIcons icon="addFriend" size="1em" color="white"></FBIcons>
-                                    Add friend
-                                </button>
+                                <a href="https://www.facebook.com/rafhael.hailar.9" target="_blank" rel="noreferrer">                                    
+                                    <button className="bg-blueish px-2.5 py-1.5 rounded flex items-center gap-1">
+                                        <FBIcons icon="addFriend" size="1em" color="white"></FBIcons>
+                                        Add friend
+                                    </button>
+                                </a>
                                 <button className="bg-grayish px-2.5 py-1.5 rounded flex items-center gap-1">
                                     <FBIcons icon="messenger" size="1em" color="white"></FBIcons>
                                     Message
@@ -64,7 +66,9 @@ const Profile = () => {
                     </div>
                 </div>
             </div>
-            <Outlet/>
+            <div className="p-x70 pt-3">
+                <Outlet/>
+            </div>
             <Navigate to={currentLocation === "" ? "./posts" : `./${currentLocation}`}></Navigate>
         </>
     );

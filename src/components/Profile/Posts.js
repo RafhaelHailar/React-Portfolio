@@ -4,8 +4,8 @@ import {total} from "../../posts.js";
 
 const Posts = () => {
     return (
-        <div className="p-x70">
-            <div className="px-7 pt-3 flex gap-3">
+        <div>
+            <div className="px-7 flex gap-3">
                 <div className="w-2/5">
                     <div className="bg-blackish rounded-lg py-1.5 px-3 text-white sticky top-10">
                         <h1 className="text-white font-bold">Intro</h1>
