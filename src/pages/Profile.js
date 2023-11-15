@@ -67,7 +67,9 @@ const Profile = () => {
                 </div>
             </div>
             <div className="p-x70 pt-3">
-                <Outlet/>
+                <div className="px-7">
+                    <Outlet/>
+                </div>
             </div>
             <Navigate to={currentLocation === "" ? "./posts" : `./${currentLocation}`}></Navigate>
         </>

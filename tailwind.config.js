@@ -12,7 +12,8 @@ module.exports = {
         blackish: "#242526",
         blackite: "#18191A",
         blackwash: "rgba(0,0,0,0.4)",
-        blueish: "#0866FF"
+        blueish: "#0866FF",
+        bluewash: "#1D85FC33"
       },
       padding: {
         "x70": "0 16.7rem 0 16rem"

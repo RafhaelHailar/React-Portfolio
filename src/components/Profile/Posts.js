@@ -5,7 +5,7 @@ import {total} from "../../posts.js";
 const Posts = () => {
     return (
         <div>
-            <div className="px-7 flex gap-3">
+            <div className="flex gap-3">
                 <div className="w-2/5">
                     <div className="bg-blackish rounded-lg py-1.5 px-3 text-white sticky top-10">
                         <h1 className="text-white font-bold">Intro</h1>
@@ -14,25 +14,25 @@ const Posts = () => {
                         </div>
                         <ul className="text-xs text-gray-300 bio-intro font-bold">
                             <li>
-                                <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yS/r/jV4o8nAgIEh.png" alt="school"/>
+                                <FBIcons icon="school" />
                                 <span>
                                     Studied at <span className="text-white">Mamatid Senior High School</span>
                                 </span>
                             </li>
                             <li>
-                                <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yS/r/jV4o8nAgIEh.png" alt="school"/>
+                                <FBIcons icon="school" />
                                 <span>
                                     Studied at <span className="text-white">Kodego BootCamp</span>
                                 </span>
                             </li>
                             <li>
-                                <img src="https://static.xx.fbcdn.net/rsrc.php/v3/y5/r/VMZOiSIJIwn.png" alt="house"/>
+                                <FBIcons icon="house" />
                                 <span>
                                     Lives in <span className="text-white">Cabuyao, Laguna</span>
                                 </span>
                             </li>
                             <li>
-                                <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yc/r/-e1Al38ZrZL.png" alt="location"/>
+                                <FBIcons icon="location" />
                                 <span>
                                     From <span className="text-white">Cabuyao, Laguna</span>
                                 </span>

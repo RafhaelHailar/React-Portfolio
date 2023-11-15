@@ -286,6 +286,21 @@ const ICONS = {
     },
     sticker: function(color,size) {
         return <i datavisualcompletion="css-img" className="icon-filter" style={{backgroundImage: "url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/G02VtBWnCu9.png)", backgroundPosition: "0px -1384px", backgroundSize: "auto", width: "16px", height: "16px", backgroundRepeat: "no-repeat", display: "inline-block", transform: `scale(${size})`}}></i>
+    },
+    workplace: function(color,size) {
+        return <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/XF1fUskiRxe.png" alt="" height={size} width={size}></img>
+    },
+    school: function() {
+        return <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yS/r/jV4o8nAgIEh.png" alt="school"/>
+    },
+    house: function() {
+        return <img src="https://static.xx.fbcdn.net/rsrc.php/v3/y5/r/VMZOiSIJIwn.png" alt="house"/>
+    },
+    location: function() {
+        return <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yc/r/-e1Al38ZrZL.png" alt="location"/>
+    },
+    relationHeart: function(color,size) {
+        return <img src="https://static.xx.fbcdn.net/rsrc.php/v3/y7/r/VfzT00EUl66.png" alt="" height={size} width={size}></img>
     }
 }
 
