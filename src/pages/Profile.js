@@ -54,7 +54,9 @@ const Profile = () => {
                                 //Routes
                                 ["posts","projects","about","contacts"].map((paths,index) => {
                                     const pathName = paths[0].toUpperCase() + paths.slice(1);
-                                    return <Link key={index} className={paths === currentLocation ? "active" : ""} to={"./" + paths}>{pathName}</Link>;
+                                    let pathLink = "./" + paths;
+                                    pathLink = paths === "contacts" ? "./about/contact_and_basic_info" : pathLink;
+                                    return <Link key={index} className={currentLocation.slice("/").includes(paths) ? "active" : ""} to={pathLink}>{pathName}</Link>;
                                 })
                             }
                         </div>

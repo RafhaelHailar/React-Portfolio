@@ -29,7 +29,6 @@ const posts = {
         "description": "Develop a simple website, A rental website where user can rent a girlfriend.\nMade with HTML,CSS and Materialize.\n Try it here: [https://cwd-b-11-rafhaelhailar.netlify.app/](RentGal!) \n Source Code here: [https://github.com/RafhaelHailar/RentGal-_SAMPLE](RentGal! Source Code)",
         "media": "https://raw.githubusercontent.com/RafhaelHailar/RentGal-_SAMPLE/master/images/current_look.jpeg"
     }
-    
 }
 const total = Object.keys(posts).length;
 

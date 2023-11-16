@@ -7,12 +7,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        blueish: "#0866FF",
         grayish: "#3A3B3C",
         grayte: "#B0B3B8",
         blackish: "#242526",
         blackite: "#18191A",
         blackwash: "rgba(0,0,0,0.4)",
-        blueish: "#0866FF",
         bluewash: "#1D85FC33"
       },
       padding: {

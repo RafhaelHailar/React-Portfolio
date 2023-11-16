@@ -30,7 +30,6 @@ function App() {
                     <Route path="contact_and_basic_info" element={<Contacts/>}></Route>
                     <Route path="details_About_Rafhael_Hailar" element={<Details/>}></Route>
                 </Route>
-                <Route path="contacts" element={<h1>HELLO WORLD!</h1>}></Route>
               </Route>
           </Routes>
     </div>

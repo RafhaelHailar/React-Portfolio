@@ -6,7 +6,7 @@ const About = () => {
     let currPath = paths[paths.length - 1];
     currPath = (currPath === 'about') ? '' : currPath;
     return (
-        <div className="flex bg-blackish rounded">
+        <div className="flex bg-blackish rounded mb-3">
             <div style={{borderRight:"1px solid rgba(255,255,255,0.15)"}} className="px-2 py-4 w-3/12">
                 <div className="px-2 mb-2">
                     <Link to="/" className="text-white active hover:underline text-lg font-bold">About</Link>
@@ -17,7 +17,7 @@ const About = () => {
                             const displayname = path[0].toUpperCase() + path.slice(1);
                             const pathname = path.replaceAll(" ","_"); 
                             const activeStyle = "bg-bluewash text-blueish active";
-                            return <Link className={"text-grayte text-xs font-bold px-2 py-2 my-1 " + ((pathname === currPath || (path === 'overview' && currPath === '')) ? activeStyle : "")} to={pathname}>{displayname}</Link>
+                            return <Link className={"text-xs font-bold px-2 py-2 my-1 " + ((pathname === currPath || (path === 'overview' && currPath === '')) ? activeStyle : "text-grayte")} to={pathname}>{displayname}</Link>
                         })
                     }
                 </div>
