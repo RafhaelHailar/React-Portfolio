@@ -120,3 +120,41 @@ button:not(.no-hover):hover {
 .preview-right::-webkit-scrollbar {
   display: none;
 }
+
+.project-cards {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-wrap: wrap; 
+  gap: 3rem;
+  padding: 2rem 6rem;
+}
+
+.project-cards > a {
+  perspective: 1000px;
+}
+
+.project-cards > a > div{
+  width: 20rem;
+  height: 25rem;
+  background: #18191A;
+  border-radius: 15px;
+  position: relative;
+  transform-style: preserve-3d;
+  overflow: hidden;
+}
+
+.project-cards > a > div::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    800px circle at var(--card-x) var(--card-y),
+    rgba(255,255,255,0.3),
+    transparent 40%
+  );
+  border-radius: inherit;
+}
+
+.project-cards > a:hover {box-shadow: none !important;}
