@@ -5,16 +5,21 @@ import Profile from "./pages/Profile";
 import { Posts, About, Projects } from "./components/Profile";
 import Preview from "./pages/Preview";
 import { Contacts, Details, Overview, PLived, WnE } from "./components/Profile/AboutComp";
+import { useEffect, useRef } from "react";
+import Chat from "./components/Chat";
 
 
 function App() {
+  const ref = useRef();
+
   return (
     <div className="App">
-          <NavigationBar></NavigationBar>
+          <NavigationBar ss={ref}></NavigationBar>
+          <Chat></Chat>
           <Routes>
               <Route path="/" element={<Navigate to="/rafhael/"></Navigate>}></Route>
               <Route path="/preview" element={<Preview></Preview>}></Route>
-              <Route path="/rafhael" element={<Profile></Profile>}>
+              <Route path="/rafhael" element={<Profile ss={ref}></Profile>}>
                 <Route path="posts" element={<Posts></Posts>}></Route>
                 <Route path="projects" element={<Projects/>}></Route>
                 <Route path="about" element={

@@ -3,7 +3,7 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import FBIcons from './FBIcons';
 import { Link } from 'react-router-dom';
 
-const NavigationBar = () => {
+const NavigationBar = ({ss}) => {
    
     return (
         <div className="sticky top-0 w-full bg-blackish px-3 py-1 flex justify-between z-10 relative overflow-hidden" style={{boxShadow: "0 .5px .1px rgba(255,255,255,.15)"}}>
@@ -34,7 +34,7 @@ const NavigationBar = () => {
                 <button>
                     <FBIcons icon="menu" size="1em" color="white"></FBIcons>
                 </button>
-                <button>
+                <button ref={ss} onClick={() => alert("HEYO")}>
                     <FBIcons icon="messenger" size="1em" color="white"></FBIcons>
                 </button>
                 <button>
