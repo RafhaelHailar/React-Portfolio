@@ -1,12 +1,16 @@
 import { Link } from "react-router-dom";
 import FBIcons from "./FBIcons";
+import { useState } from "react";
 
-const buttonClassess = "w-6 h-6 rounded-full flex justify-center items-center";
-const buttonColors = "rgba(255, 255, 255, 0.3)";
+const buttonClassess = "w-6 h-6 rounded-full flex justify-center items-center transition-all ";
+const buttonColor = "rgba(255, 255, 255, 0.3)";
 
 const Chat = () => {
+  const [isTyping,setIsTyping] = useState(false); 
+  const [buttonColor,setButtonColor] = useState("rgba(255,255,255,0.3)");
+
   return (
-    <div className="fixed flex flex-col w-64 h-3/6 bg-blackish right-16 bottom-0 rounded text-white" style={{boxShadow: "0 0 2px rgba(0,0,0,0.8)"}}>
+    <label onClick={event => event.preventDefault()} className="fixed flex flex-col w-64 h-3/6 bg-blackish right-16 bottom-0 rounded text-white cursor-default" style={{boxShadow: "0 0 2px rgba(0,0,0,0.8)"}} onFocus={() => setButtonColor("#0866FF")} onBlur={() => setButtonColor("rgba(255,255,255, 0.3)")}>
       <div className="flex justify-between items-center" style={{borderBottom: "1px solid rgba(255,255,255,0.08)"}}>
         <div className="relative flex items-center ">
           <button className="absolute h-full py-1.5 px-1.5">
@@ -16,51 +20,60 @@ const Chat = () => {
           </button>
           <button className="flex pl-11 pr-2 items-center gap-2 py-3.5 h-full ">
             <div className="text-xs font-bold">Rafhael Hailar</div>
-            <FBIcons icon="drop" color={buttonColors} size="0.5rem" />
+            <FBIcons icon="drop" color={buttonColor} size="0.5rem" />
           </button>
         </div>
         <div className="flex px-0.5 ">
           <button className={buttonClassess}>
-            <FBIcons icon="call" color={buttonColors} size=".8rem" />   
+            <FBIcons icon="call" color={buttonColor} size=".8rem" />   
           </button>
           <button className={buttonClassess}>
-            <FBIcons icon="videoCall" color={buttonColors} size=".8rem" />
+            <FBIcons icon="videoCall" color={buttonColor} size=".8rem" />
           </button>
           <button className={buttonClassess}>
-            <FBIcons icon="minimize" size="1.5rem" color={buttonColors} />
+            <FBIcons icon="minimize" size="1.5rem" color={buttonColor} />
           </button>
           <button className={buttonClassess}>
-            <FBIcons icon="closeChat" color={buttonColors} size="1.2rem"/>
+            <FBIcons icon="closeChat" color={buttonColor} size="1.2rem"/>
           </button>
         </div>
       </div>
       <div className="flex-1 ">
 
       </div>
-      <div className="flex items-center py-2 gap-1 px-1" style={{borderTop: "1px solid rgba(255,255,255, 0.1)"}}>
+      <div className={"flex items-center py-2 px-1 " + (!isTyping ? "gap-1" : "gap-0") } style={{borderTop: "1px solid rgba(255,255,255, 0.1)"}}>
         <button className={buttonClassess}>
-          <FBIcons icon="addMore" size="1rem" color={buttonColors} />
+          <FBIcons icon="addMore" size="1rem" color={buttonColor} />
         </button>
-        <button className={buttonClassess}>
-          <FBIcons icon="chatFile" size="1rem" color={buttonColors} />
+        <button className={buttonClassess + (isTyping ? " w-0" : "")}>
+          <FBIcons icon="chatFile" size="1rem" color={buttonColor} />
         </button>
-        <button className={buttonClassess}>
-          <FBIcons icon="chatSticker" size="1rem" color={buttonColors}  />
+        <button className={buttonClassess + (isTyping ? " w-0" : "")}>
+          <FBIcons icon="chatSticker" size="1rem" color={buttonColor}  />
         </button>
-        <button className={buttonClassess}>
-          <FBIcons icon="chatGif" size="1rem" color={buttonColors}  />
+        <button className={buttonClassess + (isTyping ? " w-0" : "")}>
+          <FBIcons icon="chatGif" size="1rem" color={buttonColor}  />
         </button>
-        <div className="w-32 rounded-full bg-grayish py-1 pl-3 pr-1 flex items-center">
-          <input type="text" className="w-full bg-transparent outline-none text-xs" placeholder="Aa"/>
+        <div className={"w-32 rounded-full flex-1 bg-grayish py-1 pl-3 pr-1 flex items-center " + (isTyping && "mx-1") }>
+          <input type="text" className="w-full bg-transparent outline-none text-xs" placeholder="Aa" onChange={event => {
+              if (event.target.value === "") setIsTyping(false);
+              else setIsTyping(true);
+           }}/>
           <button className="flex items-center justify-center rounded-full p-1">
-            <FBIcons icon="chatEmoji" size="1rem"/>
+            <FBIcons icon="chatEmoji" size="1rem" color={buttonColor}/>
           </button>
         </div>
-        <button className="flex items-center justify-center rounded-full p-1">
-          <FBIcons icon="chatLike" size="1rem" color={buttonColors} />
-        </button>
+        {
+          isTyping ?
+            <button className="flex items-center justify-center rounded-full p-1">
+              <FBIcons icon="send" size="1rem" color={buttonColor} />
+            </button> :
+             <button className="flex items-center justify-center rounded-full p-1">
+              <FBIcons icon="chatLike" size="1rem" color={buttonColor} />
+            </button>
+        }
       </div>
-    </div>
+    </label>
   )
 }
 

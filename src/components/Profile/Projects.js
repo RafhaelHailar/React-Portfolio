@@ -63,19 +63,19 @@ const Projects = () => {
     return (
         <div className="bg-blackish p-4 rounded">
             <div className="text-white text-">
-                <a href="#" className="active hover:underline font-bold text-lg">
+	    <a href="#" className="active hover:underline font-bold text-lg">
                     Projects
                 </a>
             </div>
             <div className="project-cards">
                 { rafProjects.map(id => {
                     const {media} = posts[id];
-                    return <Link to={`/preview?id=${id}`}>
+                    return <Link key={id} to={`/preview?id=${id}`}>
                                 <div>
                                     <img src={media} width="100%" />
                                 </div>
                             </Link>
-                })};
+                })}
             </div>
 
             {
