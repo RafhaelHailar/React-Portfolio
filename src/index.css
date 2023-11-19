@@ -20,8 +20,6 @@ code {
 }
 
 .nav-links a{
-  padding: .6rem 2.6rem;
-  margin: 0 .25rem;
 }
 
 a {
@@ -59,7 +57,6 @@ button:not(.no-hover):hover {
 .nav-actions button {
   width: 2rem;
   height: 2rem;
-  display: flex;
   justify-content: center;
   align-items: center;
   background: #3A3B3C;
