@@ -67,10 +67,10 @@ const Projects = () => {
                     Projects
                 </a>
             </div>
-            <div className="project-cards">
-                { rafProjects.map(id => {
+            <div className="project-cards md:grid-cols-2 grid-cols-1">
+                { rafProjects.map((id,idx) => {
                     const {media} = posts[id];
-                    return <Link key={id} to={`/preview?id=${id}`}>
+                    return <Link key={idx} to={`/preview?id=${id}`}>
                                 <div>
                                     <img src={media} width="100%" />
                                 </div>

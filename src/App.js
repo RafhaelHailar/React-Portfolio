@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="App flex flex-col items-center relative">
           <NavigationBar ss={ref}></NavigationBar>
-          <Chat></Chat>
+          { /* <Chat></Chat> */ }
           <Routes>
               <Route path="/" element={<Navigate to="/rafhael/"></Navigate>}></Route>
               <Route path="/preview" element={<Preview></Preview>}></Route>

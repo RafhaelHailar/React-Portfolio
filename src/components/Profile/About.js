@@ -17,7 +17,7 @@ const About = () => {
                             const displayname = path[0].toUpperCase() + path.slice(1);
                             const pathname = path.replaceAll(" ","_"); 
                             const activeStyle = "bg-bluewash text-blueish active";
-                            return <Link className={"text-xs font-bold px-2 py-2 my-1 " + ((pathname === currPath || (path === 'overview' && currPath === '')) ? activeStyle : "text-grayte")} to={pathname}>{displayname}</Link>
+                            return <Link key={displayname} className={"text-xs font-bold px-2 py-2 my-1 " + ((pathname === currPath || (path === 'overview' && currPath === '')) ? activeStyle : "text-grayte")} to={pathname}>{displayname}</Link>
                         })
                     }
                 </div>

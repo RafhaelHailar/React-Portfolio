@@ -5,8 +5,8 @@ import {total} from "../../posts.js";
 const Posts = () => {
     return (
         <div>
-            <div className="flex gap-3">
-                <div className="w-2/5">
+            <div className="flex-col lg:flex-row items-center lg:items-stretch flex gap-3">
+                <div className="w-full lg:min-w-0 lg:w-2/5">
                     <div className="bg-blackish rounded-lg py-1.5 px-3 text-white sticky top-10">
                         <h1 className="text-white font-bold">Intro</h1>
                         <div className="text-sm text-gray-200 text-center py-2.5" style={{borderBottom: "1px solid gray"}}>
@@ -52,7 +52,7 @@ const Posts = () => {
                         </div>
                     </div>
                 </div>
-                <div className="w-3/5 flex flex-col gap-3"> 
+                <div className="lg:w-3/5 w-full lg:min-w-0 flex flex-col gap-3"> 
                     <div className="bg-blackish rounded py-1.5 px-3 flex justify-between text-white items-center"> 
                         <h1 className="font-extrabold">Posts</h1>
                         <button className="flex items-center text-xs font-bold gap-1.5 bg-grayish px-2.5 py-1.5 rounded">
