@@ -9,7 +9,7 @@ const Profile = ({ss}) => {
             <div className="bg-blackish flex justify-center" >
 	    	<div className="w-full lg:w-4/6">
 			<button>
-			    <div className=" rounded overflow-hidden" style={{height: "23rem"}}>
+			    <div className=" rounded overflow-hidden sm:h-[23rem]" >
 				<img src="https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg" width="100%" alt="cover"/>
 			    </div>
 			</button>

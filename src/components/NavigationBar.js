@@ -1,13 +1,17 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import FBIcons from './FBIcons';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const NavigationBar = ({ss}) => {
-   
+    const location = useLocation();
+    let currPath = location.pathname.split("/"); // get all the paths and put it in array
+    currPath = currPath[currPath.length - 1]; // get the last path
+    const isPathPreview = currPath === "preview";
+
     return (
-        <div className="sticky top-0 w-full bg-blackish px-3 py-1 flex justify-between z-10 relative" style={{boxShadow: "0 .5px .1px rgba(255,255,255,.15)"}}>
-            <div className='flex justify-center items-center gap-2'>
+        <div className={"sticky top-0 w-full bg-blackish px-3 py-1 flex z-10 relative " + (isPathPreview ? "justify-end" : "justify-between")} style={{borderBottom: "1px solid rgba(255,255,255,.15)"}}>
+            <div className={'flex justify-center items-center gap-2 ' + (isPathPreview && "hidden") }>
                 <Link to="/home">
                     <FBIcons icon="fbIconModified" color="none" size="2em" />
                 </Link>
@@ -16,7 +20,7 @@ const NavigationBar = ({ss}) => {
                     <input type="text" className="hidden lg:inline  bg-transparent outline-none text-white text-xs w-full" placeholder='Search Rafhael' size={22}/>
                 </div>
             </div>
-            <div className='flex nav-links absolute top-0 py-1 left-0 hidden md:flex  gap-x-1 items-center h-full  w-full justify-center -z-10'>
+            <div className={'flex nav-links absolute top-0 py-1 left-0 hidden md:flex  gap-x-1 items-center h-full  w-full justify-center -z-10 ' + (isPathPreview && "md:hidden")}>
 	    {["home","video","groups","gaming"].map(link => {
 		return <Link to={"/" + link} key={link} className="xl:px-10 px-7 rounded-md inline-block h-full flex items-center">
 			    <FBIcons icon={link} size="1.2em" color="#B0B3B8" />

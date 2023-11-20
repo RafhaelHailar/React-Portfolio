@@ -13,7 +13,7 @@ function App() {
   const ref = useRef();
 
   return (
-    <div className="App flex flex-col items-center relative">
+    <div className="App flex flex-col items-center ">
           <NavigationBar ss={ref}></NavigationBar>
           { /* <Chat></Chat> */ }
           <Routes>

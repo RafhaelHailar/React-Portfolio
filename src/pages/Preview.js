@@ -10,9 +10,9 @@ const Preview = () => {
 
     if (id === "" || id === null || posts[id].media === "") return <Navigate to="/"></Navigate>
     return (
-        <div>
-            <div className="w-4/5 absolute top-0 z-50 h-full bg-black flex justify-center items-center overflow-hidden">
-                <div className="px-3 py-2 absolute top-0 left-0 flex justify-between">
+        <div className="md:static z-50  w-full">
+            <div className="md:w-2/4 lg:w-3/4 md:absolute left-0 top-0 z-50 h-full bg-black flex justify-center items-center overflow-hidden">
+                <div className="px-3 md:py-2 py-1.5 absolute top-0 left-0 flex items-center justify-between">
                     <div className="flex items-center gap-2">
                         <button className="w-8 h-8 rounded-full flex justify-center items-center bg-blackwash" onClick={() => navigate(-1)}>
                             <FBIcons icon="close" size="0.8"></FBIcons>
@@ -32,11 +32,12 @@ const Preview = () => {
                         const height = image.height;
 
                         const addClass = (height > width) ? "h-screen" : "w-screen";
-                        image.classList.add(addClass);
+                        image.className = (height > width) ? "h-full" : "w-full";
+                        image.parentElement.className = addClass;
                     }}/>
                 </div>
             </div>
-            <div className="absolute left-4/5 w-1/5 pt-3 text-grayte bg-blackish overflow-scroll preview-right" style={{height: "94vh"}}>
+            <div className="md:absolute md:left-2/4  lg:left-3/4 lg:w-1/4 pt-3 text-grayte bg-blackish overflow-scroll preview-right" style={{height: "94vh"}}>
                 <PostStructure  
                     id={id}
                     noMedia={true}
