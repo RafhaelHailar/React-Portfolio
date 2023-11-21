@@ -394,9 +394,12 @@ const ICONS = {
         </svg>
     },
     addMore2: function(color,size) {
-	return <svg viewBox="0 0 24 24" width={size} height={size} fill={color}>
-		    <path d="M11 19a1 1 0 1 0 2 0v-6h6a1 1 0 1 0 0-2h-6V5a1 1 0 1 0-2 0v6H5a1 1 0 1 0 0 2h6v6z"></path>
-	       </svg>
+	    return <svg viewBox="0 0 24 24" width={size} height={size} fill={color}>
+		         <path d="M11 19a1 1 0 1 0 2 0v-6h6a1 1 0 1 0 0-2h-6V5a1 1 0 1 0-2 0v6H5a1 1 0 1 0 0 2h6v6z"></path>
+	           </svg>
+    },
+    writeMessage: function(color,size) {
+        return <i data-visualcompletion="css-img" className="" style={{backgroundImage: "url(https://static.xx.fbcdn.net/rsrc.php/v3/yO/r/k8Rrx_TSf5e.png)", backgroundPosition: "0px -231px", backgroundSize: "auto", width: "20px", height: "20px", backgroundRepeat: "no-repeat", display: "inline-block"}}></i>
     }
 }
 

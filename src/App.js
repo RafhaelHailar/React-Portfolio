@@ -10,16 +10,24 @@ import Chat from "./components/Chat";
 
 
 function App() {
-  const ref = useRef();
+  const chatBoxRef = useRef();
+   
+  function handleShowChat() {
+      chatBoxRef.current.classList.remove("hidden");
+  }
+
+  function handleHideChat() {
+      chatBoxRef.current.classList.add("hidden");
+  }
 
   return (
     <div className="App flex flex-col items-center ">
-          <NavigationBar ss={ref}></NavigationBar>
-          { /* <Chat></Chat> */ }
+          <Chat chatBox={chatBoxRef} onHideChat={handleHideChat} onShowChat={handleShowChat}></Chat>
+          <NavigationBar onShowChat={handleShowChat}></NavigationBar>
           <Routes>
               <Route path="/" element={<Navigate to="/rafhael/"></Navigate>}></Route>
               <Route path="/preview" element={<Preview></Preview>}></Route>
-              <Route path="/rafhael" element={<Profile ss={ref}></Profile>}>
+              <Route path="/rafhael" element={<Profile onShowChat={handleShowChat}></Profile>}>
                 <Route path="posts" element={<Posts></Posts>}></Route>
                 <Route path="projects" element={<Projects/>}></Route>
                 <Route path="about" element={

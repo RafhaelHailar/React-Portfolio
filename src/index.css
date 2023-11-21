@@ -155,3 +155,20 @@ button:not(.no-hover):hover {
 }
 
 .project-cards > a:hover {box-shadow: none !important;}
+
+.arrowLRight::before {
+    content: "";
+    position: absolute;
+    width: 0.6rem;
+    height: 1.1rem;
+    right: -0.7rem;
+    top: 50%;
+    transform: translateY(-50%);
+    clip-path: polygon(0 0, 100% 50%,0 100%);
+    background: #242526;
+}
+
+.userChatMin:hover > div,
+.userChatMin:hover ~ div {
+    display: block !important;
+ }

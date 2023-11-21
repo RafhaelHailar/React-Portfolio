@@ -3,7 +3,7 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import FBIcons from './FBIcons';
 import { Link, useLocation } from 'react-router-dom';
 
-const NavigationBar = ({ss}) => {
+const NavigationBar = ({onShowChat}) => {
     const location = useLocation();
     let currPath = location.pathname.split("/"); // get all the paths and put it in array
     currPath = currPath[currPath.length - 1]; // get the last path
@@ -34,7 +34,7 @@ const NavigationBar = ({ss}) => {
                 <button className="hidden md:flex">
                     <FBIcons icon="menu" size="1em" color="white"></FBIcons>
                 </button>
-                <button ref={ss} onClick={() => alert("HEYO")} className="flex">
+                <button onClick={onShowChat} className="flex">
                     <FBIcons icon="messenger" size="1em" color="white"></FBIcons>
                 </button>
                 <button className="flex">
