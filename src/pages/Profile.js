@@ -1,7 +1,7 @@
 import FBIcons from "../components/FBIcons";
 import { Link, Outlet, useLocation, Navigate } from "react-router-dom";
 
-const Profile = ({onShowChat}) => {
+const Profile = ({setChatDisplay,chatStates}) => {
     const location = useLocation();
     const currentLocation = location.pathname.replace("/rafhael/","");
     return (
@@ -40,7 +40,7 @@ const Profile = ({onShowChat}) => {
                                 Add friend
                                 </button>
                             </a>
-                            <button onClick={onShowChat} className="bg-grayish px-2.5 py-1.5 rounded flex items-center gap-1">
+                            <button onClick={() => setChatDisplay(chatStates.shown)} className="bg-grayish px-2.5 py-1.5 rounded flex items-center gap-1">
                                 <FBIcons icon="messenger" size="1em" color="white"></FBIcons>
                                 Message
                             </button>

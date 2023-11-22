@@ -4,13 +4,12 @@ import { useState } from "react";
 
 const buttonClassess = "w-6 h-6 rounded-full flex justify-center items-center transition-all ";
 
-const Chat = ({onShowChat,onHideChat,chatBox}) => {
+const Chat = ({chatStates,chatDisplay,setChatDisplay}) => {
   const [isTyping,setIsTyping] = useState(false); 
   const [buttonColor,setButtonColor] = useState("rgba(255,255,255,0.3)");
-  
    return (
     <div className="fixed flex h-3/6 right-0 bottom-0 rounded text-white z-[100]">
-        <div tabIndex={1} ref={chatBox} className="flex flex-col h-full flex-1 bg-blackish"  style={{boxShadow: "0 0 2px rgba(0,0,0,0.8)"}}  onFocus={() => setButtonColor("#0866FF")} onBlur={() => setButtonColor("rgba(255,255,255, 0.3)")}>   
+        <div tabIndex={1}  className={"flex flex-col h-full flex-1 bg-blackish " + (chatDisplay !== chatStates.shown && "hidden")}  style={{boxShadow: "0 0 2px rgba(0,0,0,0.8)"}}  onFocus={() => setButtonColor("#0866FF")} onBlur={() => setButtonColor("rgba(255,255,255, 0.3)")}>   
           <div className="flex justify-between items-center" style={{borderBottom: "1px solid rgba(255,255,255,0.08)"}}>
             <div className="relative flex items-center ">
               <button className="absolute h-full py-1.5 px-1.5">
@@ -30,10 +29,10 @@ const Chat = ({onShowChat,onHideChat,chatBox}) => {
               <button className={buttonClassess}>
                 <FBIcons icon="videoCall" color={buttonColor} size=".8rem" />
               </button>
-              <button className={buttonClassess}>
-                <FBIcons icon="minimize" size="1.5rem" color={buttonColor} />
+              <button className={buttonClassess} onClick={() => setChatDisplay(chatStates.minimized)}>
+                <FBIcons icon="minimize" size="1.5rem" color={buttonColor}/>
               </button>
-              <button className={buttonClassess} onClick={onHideChat}>
+              <button className={buttonClassess} onClick={() => setChatDisplay(chatStates.hidden)}>
                 <FBIcons icon="closeChat" color={buttonColor} size="1.2rem"/>
               </button>
             </div>
@@ -74,30 +73,41 @@ const Chat = ({onShowChat,onHideChat,chatBox}) => {
             }
           </div>
        </div>
-       <div className="flex items-end justify-center">
-         <div className="px-4 pb-10 relative flex" onClick={onShowChat}>
-            <div className="userChatMin">
-                <button className="rounded-full overflow-hidden">
-                  <div className="w-10 h-10 rounded-full flex">
-                     <img src="https://images.ctfassets.net/ww1ie0z745y7/2ZLgATkZvsbHjsnrPRzBYu/e592901dccc526622e39898e9271a7ef/Goldfish.jpeg?q=75" width="100%" />
-                  </div>
-                </button>
-                <div className="hidden">
-                    <button className="flex rounded-full bg-blackish absolute right-2 top-0 -mt-1">
-                        <FBIcons icon="close" size="0.5" />
+       <div className="flex flex-col items-end justify-end p-5">
+         <div>
+            <div className={"relative flex " + (chatDisplay !== chatStates.minimized && "hidden")} >
+                <div className="userChatMin">
+                    <button className="rounded-full overflow-hidden" onClick={() => setChatDisplay(chatStates.shown)}>
+                      <div className="w-10 h-10 rounded-full flex">
+                         <img src="https://images.ctfassets.net/ww1ie0z745y7/2ZLgATkZvsbHjsnrPRzBYu/e592901dccc526622e39898e9271a7ef/Goldfish.jpeg?q=75" width="100%" />
+                      </div>
                     </button>
-                </div>
-            </div>
-            <div className="hidden">
-                <div className="arrowLRight absolute rounded-lg bg-blackish text-xs w-36 right-full">
-                    <div className="p-2" >
-                        <div className="font-bold">Rafhael Hailar</div>
-                        <div className="text-grayte">You: Hello, Handome..</div>
+                    <div className="hidden">
+                        <button className="flex rounded-full bg-blackish absolute -right-1.5 top-0 -mt-1" onClick={() => setChatDisplay(chatStates.hidden)}>
+                            <FBIcons icon="close" size="0.5" />
+                        </button>
                     </div>
                 </div>
-            </div>
+                <div className="hidden">
+                    <div className="arrowLRight absolute rounded-lg bg-blackish text-xs w-36 right-full">
+                        <div className="p-2" >
+                            <div className="font-bold">Rafhael Hailar</div>
+                            <div className="text-grayte">You: Hello, Handome..</div>
+                        </div>
+                    </div>
+                </div>
+             </div>
          </div>
-       </div>
+         <div>
+             <div>
+                    <button className="bg-grayish rounded-full overflow-hidden" >
+                      <div className="w-10 h-10 items-center justify-center rounded-full flex">
+                          <FBIcons icon="writeMessage" size={0.8} />
+                      </div>
+                    </button>
+              </div>
+        </div>
+      </div>
     </div>
   )
 }

@@ -5,31 +5,28 @@ import Profile from "./pages/Profile";
 import { Posts, About, Projects } from "./components/Profile";
 import Preview from "./pages/Preview";
 import { Contacts, Details, Overview, PLived, WnE } from "./components/Profile/AboutComp";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Chat from "./components/Chat";
 
-
 function App() {
-  const chatBoxRef = useRef();
-   
-  function handleShowChat() {
-      chatBoxRef.current.classList.remove("hidden");
+  const ChatDisplayState = {
+     hidden: "hidden",
+     shown: "shown",
+     minimized: "minimize"
   }
 
-  function handleHideChat() {
-      chatBoxRef.current.classList.add("hidden");
-  }
+  const [chatDisplay,setChatDisplay] = useState(ChatDisplayState.hidden);
 
   return (
     <div className="App flex flex-col items-center ">
-          <Chat chatBox={chatBoxRef} onHideChat={handleHideChat} onShowChat={handleShowChat}></Chat>
-          <NavigationBar onShowChat={handleShowChat}></NavigationBar>
+          <Chat setChatDisplay={setChatDisplay}  chatDisplay={chatDisplay} chatStates={ChatDisplayState}/>
+          <NavigationBar setChatDisplay={setChatDisplay} chatStates={ChatDisplayState} />
           <Routes>
-              <Route path="/" element={<Navigate to="/rafhael/"></Navigate>}></Route>
-              <Route path="/preview" element={<Preview></Preview>}></Route>
-              <Route path="/rafhael" element={<Profile onShowChat={handleShowChat}></Profile>}>
-                <Route path="posts" element={<Posts></Posts>}></Route>
-                <Route path="projects" element={<Projects/>}></Route>
+              <Route path="/" element={<Navigate to="/rafhael/"/>} />
+              <Route path="/preview" element={<Preview/>} />
+              <Route path="/rafhael" element={<Profile setChatDisplay={setChatDisplay} chatStates={ChatDisplayState}/>}>
+                <Route path="posts" element={<Posts/>} />
+                <Route path="projects" element={<Projects/>} />
                 <Route path="about" element={
                   <>
                     <About/>
@@ -37,11 +34,11 @@ function App() {
                   </>
                 }>
                     <Route path="" element={<Overview/>} />
-                    <Route path="overview" element={<Overview/>}></Route>
-                    <Route path="work_and_education" element={<WnE/>}></Route>
-                    <Route path="places_lived" element={<PLived/>}></Route>
-                    <Route path="contact_and_basic_info" element={<Contacts/>}></Route>
-                    <Route path="details_About_Rafhael_Hailar" element={<Details/>}></Route>
+                    <Route path="overview" element={<Overview/>} />
+                    <Route path="work_and_education" element={<WnE/>} />
+                    <Route path="places_lived" element={<PLived/>} />
+                    <Route path="contact_and_basic_info" element={<Contacts/>} />
+                    <Route path="details_About_Rafhael_Hailar" element={<Details/>} />
                 </Route>
               </Route>
           </Routes>

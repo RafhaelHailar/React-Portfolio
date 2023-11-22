@@ -399,7 +399,7 @@ const ICONS = {
 	           </svg>
     },
     writeMessage: function(color,size) {
-        return <i data-visualcompletion="css-img" className="" style={{backgroundImage: "url(https://static.xx.fbcdn.net/rsrc.php/v3/yO/r/k8Rrx_TSf5e.png)", backgroundPosition: "0px -231px", backgroundSize: "auto", width: "20px", height: "20px", backgroundRepeat: "no-repeat", display: "inline-block"}}></i>
+        return <i data-visualcompletion="css-img" style={{backgroundImage: "url(https://static.xx.fbcdn.net/rsrc.php/v3/yO/r/k8Rrx_TSf5e.png)", backgroundPosition: "0px -231px", backgroundSize: "auto", width: "20px", height: "20px", backgroundRepeat: "no-repeat", display: "inline-block",filter: "invert(100%)",transform: `scale(${size})`}}></i>
     }
 }
 
