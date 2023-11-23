@@ -168,7 +168,11 @@ button:not(.no-hover):hover {
     background: #242526;
 }
 
-.userChatMin:hover > div,
-.userChatMin:hover ~ div {
+.userChatMin:hover > div.hidden,
+.userChatMin:hover ~ div.hidden {
     display: block !important;
+ }
+
+.hiddenTools:hover > div.invisible {
+    visibility: visible !important;
  }

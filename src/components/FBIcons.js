@@ -400,7 +400,21 @@ const ICONS = {
     },
     writeMessage: function(color,size) {
         return <i data-visualcompletion="css-img" style={{backgroundImage: "url(https://static.xx.fbcdn.net/rsrc.php/v3/yO/r/k8Rrx_TSf5e.png)", backgroundPosition: "0px -231px", backgroundSize: "auto", width: "20px", height: "20px", backgroundRepeat: "no-repeat", display: "inline-block",filter: "invert(100%)",transform: `scale(${size})`}}></i>
-    }
+    },
+    moreVertically: function(color,size) {
+        return <svg height={size} viewBox="0 0 22 22" width={size}>
+                    <circle cx="11" cy="6" fill={color} r="2" strokeWidth="1px"></circle>
+                    <circle cx="11" cy="11" fill={color} r="2" strokeWidth="1px"></circle>
+                    <circle cx="11" cy="16" fill={color} r="2" strokeWidth="1px"></circle>
+                </svg>
+    },
+    reply: function(color,size) {
+        return <svg height={size} viewBox="1 1 21 21" width={size} fill={color}>
+                    <g fillRule="evenodd" strokeWidth="1">
+                        <path d="M10.8932368,14.7625445 C10.8932368,15.535432 10.0849567,15.996442 9.48116675,15.5677995 L4.03193175,11.696707 C3.49257425,11.313742 3.49287675,10.4694645 4.03193175,10.0864995 L9.48116675,6.2157095 C10.0849567,5.7867645 10.8932368,6.248077 10.8932368,7.020662 L10.8938418,9.0755445 C15.2129368,9.0755445 18.1517243,11.027577 18.1523293,15.7226795 C18.1523293,16.0820495 17.9036743,16.3349395 17.5273643,16.3349395 C17.2487618,16.3349395 17.0164418,16.1746145 16.8527893,15.680027 C16.1588543,13.584307 14.1063918,12.7049395 10.8938418,12.7049395 L10.8932368,14.7625445 Z"></path>
+                    </g>
+               </svg>
+    },
 }
 
 const FBIcons = ({icon,color,size,classy}) => {
