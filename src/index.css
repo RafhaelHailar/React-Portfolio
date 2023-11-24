@@ -19,6 +19,21 @@ code {
   --blueish: #0866FF;
 }
 
+
+::-webkit-scrollbar {
+    width: 0.4rem;
+}
+
+::-webkit-scrollbar-track {
+    background: #3A3B3C;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #B0B3B8;
+    border-radius: 20px;
+}
+
+
 .nav-links a{
 }
 

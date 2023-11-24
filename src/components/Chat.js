@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import FBIcons from "./FBIcons";
 import { useState, useEffect, useRef } from "react";
-import { viewerEmail, setViewerEmail } from "./ChatContainer.js";
+import { getViewerEmail, setViewerEmail, sendMessage, getMessages } from "./ChatContainer.js";
+import { dateTimeFormat } from "../utility";
 
 const buttonClassess = "w-6 h-6 rounded-full flex justify-center items-center transition-all ";
 const buttonClassVaryingW = buttonClassess.replace("w-6","");
@@ -10,8 +11,11 @@ const Chat = ({chatStates,chatDisplay,setChatDisplay}) => {
   const [isTyping,setIsTyping] = useState(false); 
   const [buttonColor,setButtonColor] = useState("rgba(255,255,255,0.3)");
 
-  const [isEmailSet,setIsEmailSet] = useState(viewerEmail !== null);
+  const [isEmailSet,setIsEmailSet] = useState(getViewerEmail() !== null);
+  
+  const [messages,setMessages] = useState(getMessages());
 
+  const chatForm = useRef();
   const chatInput = useRef();
   useEffect(() => {
      if (chatDisplay === chatStates.shown && isEmailSet) chatInput.current.focus();
@@ -51,64 +55,46 @@ const Chat = ({chatStates,chatDisplay,setChatDisplay}) => {
               </button>
             </div>
           </div>
-          <div className="flex-1 flex flex-col">
-              <div className="flex-1 flex flex-col justify-end py-1 ">
-                  <div>
-                    <div className="text-grayte text-xs text-center mb-2">Wed 6:02 PM</div>
-                    <div>
-                        <div>
-                            <div className="flex w-full justify-end items-center gap-0.5 hiddenTools">
-                                <div className="flex invisible px-0.5 gap-0.5">
-                                     <button className={buttonClassess + " scale-75 -mx-1"}>
-                                        <FBIcons icon="moreVertically" color="rgba(255, 255, 255, 0.3" size="1.3rem"/>
-                                     </button>
-                                    <button className={buttonClassess + " scale-75 -mx-1"}>
-                                        <FBIcons icon="reply" color="rgba(255, 255, 255, 0.3" size="1.3rem"/>
-                                     </button>
-                                    <button className={buttonClassess + " scale-75 -mx-1"}>
-                                        <FBIcons icon="emoji" color="rgba(255, 255, 255, 0.3" size="0.8"/>
-                                     </button>
-                                </div>
-                                <div className="relative max-w-[10rem]">
-                                    <div className="bg-blueish word-wrap w-full rounded-2xl text-xs p-2">
-                                        Hello my friend, I am your old friend asdsadsa sdasd   
+          <div className="flex-1 flex flex-col relative">
+              <div className="flex-1 flex flex-col max-h-[17.4rem] py-1 pr-1.5 overflow-auto">
+                  {
+                      (messages).map(message => {
+                           return (
+                               <div key={message.dateCreated}>
+                                    <div className="text-grayte text-[0.6rem] text-center mb-2">{dateTimeFormat(new Date(Number(message.dateCreated)))}</div>
+                                    <div>
+                                        <div>
+                                            <div className="flex w-full justify-end items-center gap-0.5 hiddenTools">
+                                                <div className="flex invisible px-0.5 gap-0.5">
+                                                     <button className={buttonClassess + " scale-75 -mx-1"}>
+                                                        <FBIcons icon="moreVertically" color="rgba(255, 255, 255, 0.3" size="1.4rem"/>
+                                                     </button>
+                                                    <button className={buttonClassess + " scale-75 -mx-1"}>
+                                                        <FBIcons icon="reply" color="rgba(255, 255, 255, 0.3" size="1.4rem"/>
+                                                     </button>
+                                                    <button className={buttonClassess + " scale-75 -mx-1"}>
+                                                        <FBIcons icon="emoji" color="rgba(255, 255, 255, 0.3" size="0.9"/>
+                                                     </button>
+                                                </div>
+                                                <div className="relative max-w-[10rem]">
+                                                    <div className="bg-blueish word-wrap w-full rounded-xl text-xs p-2" >
+                                                        {message.message}   
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="text-right text-[0.6rem] text-grayte mr-1">
+                                                 {message.sent ? "Sent" : "Not Sent"}
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div className="text-right text-xs text-grayte mr-1">
-                                Sent
-                            </div>
-                        </div>
-                    </div>
-                 </div>
-                 <div>
-                    <div className="text-grayte text-xs text-center mb-2">Wed 6:02 PM</div>
-                    <div>
-                        <div>
-                            <div className="flex w-full justify-end items-center gap-0.5 hiddenTools">
-                                <div className="flex invisible px-0.5 gap-0.5">
-                                     <button className={buttonClassess + " scale-75 -mx-1"}>
-                                        <FBIcons icon="moreVertically" color="rgba(255, 255, 255, 0.3" size="1.3rem"/>
-                                     </button>
-                                    <button className={buttonClassess + " scale-75 -mx-1"}>
-                                        <FBIcons icon="reply" color="rgba(255, 255, 255, 0.3" size="1.3rem"/>
-                                     </button>
-                                    <button className={buttonClassess + " scale-75 -mx-1"}>
-                                        <FBIcons icon="emoji" color="rgba(255, 255, 255, 0.3" size="0.8"/>
-                                     </button>
-                                </div>
-                                <div className="relative flex-1 w-40">
-                                    <div className="bg-blueish word-wrap w-full rounded-2xl text-xs p-2">
-                                          HELLO MY FRIEND IF YOU READ THIS MESSAGE YOU ARE  PROABBLY GAY
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="text-right text-xs text-grayte mr-1">
-                                Sent
-                            </div>
-                        </div>
-                    </div>
-                 </div>
+                           );
+                       })
+                  }
+               </div>
+              <div className={"pl-1 text-[0.5rem] text-grayte " + (!isEmailSet && "hidden")}> 
+                <span>{getViewerEmail()}</span>   
+                <button onClick={()  => setIsEmailSet(false)} className="ml-0.5 text-blueish no-hover"> change email</button>
               </div>
               <div className={"flex items-center py-2 px-1 w-64 " + (isTyping ? "gap-0" : "gap-1") } style={{borderTop: "1px solid rgba(255,255,255, 0.1)"}}>
                 <button className={buttonClassess}>
@@ -126,12 +112,25 @@ const Chat = ({chatStates,chatDisplay,setChatDisplay}) => {
                 <div className={"w-32 rounded-2xl flex-1 bg-grayish py-1 pl-3 pr-1 flex items-center flex" + (isTyping && "mx-1")}>
                   <div className="relative text-xs w-40">
                       <div contentEditable="true" ref={chatInput} className={"bg-transparent outline-none "} onInput={event => {
-                          if (event.target.innerHTML === "") {
+                          if (event.target.innerHTML === "" || event.nativeEvent.inputType === "insertParagraph") {
                               setIsTyping(false);
-                              
-                          }else setIsTyping(true);
-                       }}>
+                              event.target.innerHTML = "";
+                          }else {
+                              chatForm.current.message.value = event.target.innerHTML;
+                              setIsTyping(true);
+                          }
+                       }} onKeyDown={(event) => {
+                            if (!event.shiftKey && event.key === "Enter") {
+                                sendMessage(chatForm.current,setMessages);
+                                chatForm.current.reset();
+                            }
+                        }}>
                       </div>
+                      <form className="hidden" ref={chatForm}>
+                          <input type="email" defaultValue={getViewerEmail()} name="email" />
+                          <input type="text" name="message"/>
+                          <input type="number" defaultValue={Number(new Date())} name="dateCreated"/>
+                      </form>
                       <div className={"top-0 absolute text-grayte " + (isTyping && "hidden") }>Aa</div>
                   </div>
                   <button className="flex items-center justify-center rounded-full p-1">
@@ -154,14 +153,15 @@ const Chat = ({chatStates,chatDisplay,setChatDisplay}) => {
                            <img src="https://makeupeffects.weebly.com/uploads/1/2/4/3/12434022/6232331.jpg" width="100%" alt='user profile'/>
                         </div>
                         <div className="font-bold">Set Email</div>
-                        <form className="flex flex-col items-center" onSubmit={handleSetEmail}>
+                        <form className="flex flex-col items-center gap-1" onSubmit={handleSetEmail}>
                             <div className="bg-blackish rounded-lg">
                                 <input type="email" name="email" className="px-2 text-sm py-1 bg-transparent outline-none" />
                             </div> 
-                            <button className="bg-blueish font-bold px-5 py-1 rounded">SET</button>
+                            <button className="bg-blueish font-bold px-5 py-1 ">SET</button>
                         </form>
                      </div>
               </div>
+             
            </div>
        </div>
        <div className="flex flex-col items-end justify-end p-5">
