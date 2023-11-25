@@ -7,7 +7,7 @@ import Preview from "./pages/Preview";
 import { Contacts, Details, Overview, PLived, WnE } from "./components/Profile/AboutComp";
 import { useEffect, useRef, useState } from "react";
 import Chat from "./components/Chat";
-console.log(process.env.REACT_APP_EMAILJS_SERVICE_ID);
+
 function App() {
   const ChatDisplayState = {
      hidden: "hidden",

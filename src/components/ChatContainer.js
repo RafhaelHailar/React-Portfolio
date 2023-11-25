@@ -1,27 +1,37 @@
 import emailjs from '@emailjs/browser';
 
-export const getViewerEmail = () => localStorage.getItem("RafPFolio-setEmail");
+//local storage const
+
+const MESSAGES = "RafPFolio-messages";
+const SET_EMAIL = "RafPFolio-setEmail";
+
+export const getViewerEmail = () => localStorage.getItem(SET_EMAIL);
 export const setViewerEmail = function(email) {
     if (email === "") return false;
-    localStorage.setItem("RafPFolio-setEmail",email);
+    localStorage.setItem(SET_EMAIL,email);
     return true;
 }
 
 function getMessages() {
-    const messages = localStorage.getItem("RafPFolio-messages") || "[]";
+    const messages = localStorage.getItem(MESSAGES) || "[]";
     return JSON.parse(messages);
 }
 
+
 export { getMessages };
 
-export const sendMessage = function(messageForm,setMessages) {
-    let messages = getMessages();
-    const newMessage = {
-        email: messageForm.email.value,
-        message: messageForm.message.value,
-        dateCreated: messageForm.dateCreated.value
-    };
-    const data = new FormData(messageForm);
+export function updateMessage(id,updatedMessage) {
+    const messages = getMessages();
+    messages[id] = updatedMessage;
+    localStorage.setItem(MESSAGES,JSON.stringify(messages));
+}
+
+export function getMessage(id) {
+    const messages = getMessages();
+    return messages[id];
+}
+
+export const sendMessage = function(messageForm,updateStatus) {
     try {
         emailjs.sendForm(process.env.REACT_APP_EMAILJS_SERVICE_ID,
                          process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
@@ -29,17 +39,27 @@ export const sendMessage = function(messageForm,setMessages) {
                          process.env.REACT_APP_EMAILJS_PUBLIC_KEY)
         .then(
             (data) => {
-                newMessage.sent = true;
+                updateStatus(null,true);
             },(error) => {
-                console.error(error);
-                newMessage.sent = false;
-            })  
-        .finally(() => {
-            messages.push(newMessage);
-            setMessages(messages);
-            localStorage.setItem("RafPFolio-messages",JSON.stringify(messages));
-        });
+                updateStatus(error);
+        });  
     } catch (error) {
         console.log(error);
     }
+
+}
+
+export const createMessage = function(messageForm,setMessages) {
+    let messages = getMessages();
+    const newMessage = {
+        id: messages.length,
+        email: messageForm.email.value,
+        message: messageForm.message.value,
+        dateCreated: messageForm.dateCreated.value,
+        sent: false,
+        error: null
+    };
+    messages.push(newMessage);
+    setMessages(messages);
+    localStorage.setItem(MESSAGES,JSON.stringify(messages));
 }

@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import FBIcons from "./FBIcons";
 import { useState, useEffect, useRef } from "react";
-import { getViewerEmail, setViewerEmail, sendMessage, getMessages } from "./ChatContainer.js";
-import { dateTimeFormat } from "../utility";
+import { getViewerEmail, setViewerEmail, createMessage, getMessages } from "./ChatContainer.js";
+import Message from "./Message";
 
 const buttonClassess = "w-6 h-6 rounded-full flex justify-center items-center transition-all ";
 const buttonClassVaryingW = buttonClassess.replace("w-6","");
@@ -14,12 +14,17 @@ const Chat = ({chatStates,chatDisplay,setChatDisplay}) => {
   const [isEmailSet,setIsEmailSet] = useState(getViewerEmail() !== null);
   
   const [messages,setMessages] = useState(getMessages());
-
+ 
+  const messagesContainer = useRef();
   const chatForm = useRef();
   const chatInput = useRef();
   useEffect(() => {
      if (chatDisplay === chatStates.shown && isEmailSet) chatInput.current.focus();
   },[chatDisplay,chatStates.shown]);
+ 
+  useEffect(() => {
+    messagesContainer.current.scrollTo(0,messagesContainer.current.scrollHeight);
+  },[messages,chatDisplay]);
 
   function handleSetEmail(event) {
       event.preventDefault();
@@ -56,39 +61,10 @@ const Chat = ({chatStates,chatDisplay,setChatDisplay}) => {
             </div>
           </div>
           <div className="flex-1 flex flex-col relative">
-              <div className="flex-1 flex flex-col max-h-[17.4rem] py-1 pr-1.5 overflow-auto">
+              <div ref={messagesContainer} className="flex-1 flex flex-col max-h-[17.4rem] py-1 pr-1.5 overflow-auto" >
                   {
-                      (messages).map(message => {
-                           return (
-                               <div key={message.dateCreated}>
-                                    <div className="text-grayte text-[0.6rem] text-center mb-2">{dateTimeFormat(new Date(Number(message.dateCreated)))}</div>
-                                    <div>
-                                        <div>
-                                            <div className="flex w-full justify-end items-center gap-0.5 hiddenTools">
-                                                <div className="flex invisible px-0.5 gap-0.5">
-                                                     <button className={buttonClassess + " scale-75 -mx-1"}>
-                                                        <FBIcons icon="moreVertically" color="rgba(255, 255, 255, 0.3" size="1.4rem"/>
-                                                     </button>
-                                                    <button className={buttonClassess + " scale-75 -mx-1"}>
-                                                        <FBIcons icon="reply" color="rgba(255, 255, 255, 0.3" size="1.4rem"/>
-                                                     </button>
-                                                    <button className={buttonClassess + " scale-75 -mx-1"}>
-                                                        <FBIcons icon="emoji" color="rgba(255, 255, 255, 0.3" size="0.9"/>
-                                                     </button>
-                                                </div>
-                                                <div className="relative max-w-[10rem]">
-                                                    <div className="bg-blueish word-wrap w-full rounded-xl text-xs p-2" >
-                                                        {message.message}   
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="text-right text-[0.6rem] text-grayte mr-1">
-                                                 {message.sent ? "Sent" : "Not Sent"}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                           );
+                      (messages).map((message,index) => {
+                           return <Message key={index} id={index} />
                        })
                   }
                </div>
@@ -116,12 +92,12 @@ const Chat = ({chatStates,chatDisplay,setChatDisplay}) => {
                               setIsTyping(false);
                               event.target.innerHTML = "";
                           }else {
-                              chatForm.current.message.value = event.target.innerHTML;
+                              chatForm.current.message.value = event.target.innerHTML.replaceAll("<br>","\n").replaceAll("&nbsp;"," ");
                               setIsTyping(true);
                           }
                        }} onKeyDown={(event) => {
-                            if (!event.shiftKey && event.key === "Enter") {
-                                sendMessage(chatForm.current,setMessages);
+                            if (!event.shiftKey && event.key === "Enter" && isTyping) {
+                                createMessage(chatForm.current,setMessages);
                                 chatForm.current.reset();
                             }
                         }}>
