@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/React-Portfolio/static/css/main.2b140824.css",
-    "main.js": "/React-Portfolio/static/js/main.e2048ca2.js",
+    "main.css": "/React-Portfolio/static/css/main.822c25a4.css",
+    "main.js": "/React-Portfolio/static/js/main.7324279c.js",
     "static/js/787.1ed0c42c.chunk.js": "/React-Portfolio/static/js/787.1ed0c42c.chunk.js",
+    "static/media/Rafhael_Hailar_CV.pdf": "/React-Portfolio/static/media/Rafhael_Hailar_CV.24c1f2fae9e9f74fa280.pdf",
     "index.html": "/React-Portfolio/index.html",
-    "main.2b140824.css.map": "/React-Portfolio/static/css/main.2b140824.css.map",
-    "main.e2048ca2.js.map": "/React-Portfolio/static/js/main.e2048ca2.js.map",
+    "main.822c25a4.css.map": "/React-Portfolio/static/css/main.822c25a4.css.map",
+    "main.7324279c.js.map": "/React-Portfolio/static/js/main.7324279c.js.map",
     "787.1ed0c42c.chunk.js.map": "/React-Portfolio/static/js/787.1ed0c42c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2b140824.css",
-    "static/js/main.e2048ca2.js"
+    "static/css/main.822c25a4.css",
+    "static/js/main.7324279c.js"
   ]
 }
