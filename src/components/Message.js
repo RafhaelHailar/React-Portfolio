@@ -7,7 +7,7 @@ const buttonClassess = "w-6 h-6 rounded-full flex justify-center items-center tr
 
 const Message = ({id}) => {
    const message = getMessage(id); 
-   const [_,statusUpdated] = useState();
+   const [_,statusUpdated] = useState(1);
     
    const messageForm = useRef();
 
@@ -15,17 +15,17 @@ const Message = ({id}) => {
        message.sent = sent;
        message.error = error;
        updateMessage(id,message);
-       statusUpdated(1);
+       statusUpdated(_ + 1);
    }
     
    useEffect(() => {
        if (!message.sent && !message.error) {
           sendMessage(messageForm.current,updateStatus);
        }
-   },[]);
+   });
    
    return (
-          <div key={message.dateCreated}>
+          <div>
               {
                   (!message.sent && !message.error) &&
                       <form className="hidden" ref={messageForm} >
@@ -50,7 +50,7 @@ const Message = ({id}) => {
                                </button>
                           </div>
                           <div className="relative max-w-[10rem]">
-                              <div className="bg-blueish word-wrap w-full rounded-xl text-xs p-2" >
+                              <div className="bg-blueish w-full break-words rounded-xl text-xs p-2" >
                                   {message.message}   
                               </div>
                           </div>

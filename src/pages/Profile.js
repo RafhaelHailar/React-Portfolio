@@ -1,5 +1,6 @@
 import FBIcons from "../components/FBIcons";
 import { Link, Outlet, useLocation, Navigate } from "react-router-dom";
+import MY_CV from "./files/Rafhael_Hailar_CV.pdf";
 
 const Profile = ({setChatDisplay,chatStates}) => {
     const location = useLocation();
@@ -34,16 +35,20 @@ const Profile = ({setChatDisplay,chatStates}) => {
                         </div>
                         <div className="h-11">
                             <div className="text-white text-xs font-semibold flex gap-1.5">
-                            <a href="https://www.facebook.com/rafhael.hailar.9" target="_blank" rel="noreferrer">                                    
-                                <button className="bg-blueish px-2.5 py-1.5 rounded flex items-center gap-1">
-                                <FBIcons icon="addFriend" size="1em" color="white"></FBIcons>
-                                Add friend
+                                <a href="https://www.facebook.com/rafhael.hailar.9" target="_blank" rel="noreferrer">                                    
+                                    <button className="bg-blueish px-2.5 py-1.5 rounded flex items-center gap-1">
+                                    <FBIcons icon="addFriend" size="1em" color="white"></FBIcons>
+                                    Add friend
+                                    </button>
+                                </a>
+                                <button onClick={() => setChatDisplay(chatStates.shown)} className="bg-grayish px-2.5 py-1.5 rounded flex items-center gap-1">
+                                    <FBIcons icon="messenger" size="1em" color="white"></FBIcons>
+                                    Message
                                 </button>
-                            </a>
-                            <button onClick={() => setChatDisplay(chatStates.shown)} className="bg-grayish px-2.5 py-1.5 rounded flex items-center gap-1">
-                                <FBIcons icon="messenger" size="1em" color="white"></FBIcons>
-                                Message
-                            </button>
+                                <a href={MY_CV} download={"Rafhael_Hailar_CV.pdf"} className="flex items-center px-2.5 gap-1.5" style={{border: "1px solid rgba(255,255,255, .3)"}}>
+                                    <FBIcons icon="cv" size="1rem"/>
+                                    Download Resume
+                                </a>
                             </div>
                         </div>
 			    </div>
