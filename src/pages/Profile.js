@@ -1,6 +1,7 @@
 import FBIcons from "../components/FBIcons";
 import { Link, Outlet, useLocation, Navigate } from "react-router-dom";
 import MY_CV from "./files/Rafhael_Hailar_CV.pdf";
+import RafhaelHailarImage from "../images/rafhael_hailar.jpg";
 
 const Profile = ({setChatDisplay,chatStates}) => {
     const location = useLocation();
@@ -20,7 +21,7 @@ const Profile = ({setChatDisplay,chatStates}) => {
                             <button className="rounded-full overflow-hidden">
                                     <div className="rounded-full bg-black" style={{padding: "0.2rem"}}>
                                         <div className="bg-lime-600 rounded-full overflow-hidden flex align-center justify-center" style={{width: "8.5rem",height: "8.5rem"}}>
-                                        <img src="https://images.ctfassets.net/ww1ie0z745y7/2ZLgATkZvsbHjsnrPRzBYu/e592901dccc526622e39898e9271a7ef/Goldfish.jpeg?q=75" width="100%" alt="Rafhael Hailar"/>
+                                        <img src={RafhaelHailarImage} width="100%" alt="Rafhael Hailar"/>
                                         </div>
                                     </div>
                             </button>

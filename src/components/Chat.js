@@ -3,6 +3,7 @@ import FBIcons from "./FBIcons";
 import { useState, useEffect, useRef } from "react";
 import { getViewerEmail, setViewerEmail, createMessage, getMessages } from "./ChatContainer.js";
 import Message from "./Message";
+import RafhaelHailarImage from "../images/rafhael_hailar.jpg";
 
 const buttonClassess = "w-6 h-6 rounded-full flex justify-center items-center transition-all ";
 const buttonClassVaryingW = buttonClassess.replace("w-6","");
@@ -20,7 +21,7 @@ const Chat = ({chatStates,chatDisplay,setChatDisplay}) => {
   const chatInput = useRef();
   useEffect(() => {
      if (chatDisplay === chatStates.shown && isEmailSet) chatInput.current.focus();
-  },[chatDisplay,chatStates.shown]);
+  },[chatDisplay,chatStates.shown,isEmailSet]);
  
   useEffect(() => {
     messagesContainer.current.scrollTo(0,messagesContainer.current.scrollHeight);
@@ -37,7 +38,7 @@ const Chat = ({chatStates,chatDisplay,setChatDisplay}) => {
             <div className="relative flex items-center ">
               <button className="absolute h-full py-1.5 px-1.5">
                 <Link to="" className="inline-block w-8 h-8 rounded-full overflow-hidden flex">
-                  <img src="https://images.ctfassets.net/ww1ie0z745y7/2ZLgATkZvsbHjsnrPRzBYu/e592901dccc526622e39898e9271a7ef/Goldfish.jpeg?q=75" alt="Rafhael Hailar" width="100%"/>
+                  <img src={RafhaelHailarImage} alt="Rafhael Hailar" width="100%"/>
                 </Link>
               </button>
               <button className="flex pl-11 pr-2 items-center gap-2 py-3.5 h-full ">
@@ -146,7 +147,7 @@ const Chat = ({chatStates,chatDisplay,setChatDisplay}) => {
                 <div className="userChatMin">
                     <button className="rounded-full overflow-hidden" onClick={() => setChatDisplay(chatStates.shown)}>
                       <div className="w-10 h-10 rounded-full flex">
-                         <img src="https://images.ctfassets.net/ww1ie0z745y7/2ZLgATkZvsbHjsnrPRzBYu/e592901dccc526622e39898e9271a7ef/Goldfish.jpeg?q=75" alt="Rafhael Hailar"  width="100%" />
+                         <img src={RafhaelHailarImage} alt="Rafhael Hailar"  width="100%" />
                       </div>
                     </button>
                     <div className="hidden">

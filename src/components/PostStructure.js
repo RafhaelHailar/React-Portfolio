@@ -2,6 +2,7 @@ import FBIcons from "./FBIcons";
 import {posts} from "../posts";
 import { Link } from "react-router-dom";
 import { useEffect, useRef } from "react";
+import RafhaelHailarImage from "../images/rafhael_hailar.jpg";
 
 const PostStructure = ({id,noMedia}) => {
     let {date,description,media} = posts[id];
@@ -9,12 +10,12 @@ const PostStructure = ({id,noMedia}) => {
 
     useEffect(
         () => {
-            description = description.replaceAll("\n",'<br/>');
-            description = description.replace(/\[([^\]]+)\]\(([^)]+)\)/g,(_,$1,$2) => {
-                return `<a href='${$1}' target='_blank'>${$2}</a>`;
+            let descriptionFormatted = description.replaceAll("\n",'<br/>');
+            descriptionFormatted = descriptionFormatted.replace(/\[([^\]]+)\]\(([^)]+)\)/g,(_,$1,$2) => {
+                    return `<a href='${$1}' target='_blank'>${$2}</a>`;
             });
-            descriptor.current.innerHTML = description;
-        },[]
+            descriptor.current.innerHTML = descriptionFormatted;
+        },[description]
     );
 
     return (
@@ -24,7 +25,7 @@ const PostStructure = ({id,noMedia}) => {
                     <div>
                         <button className="rounded-full  overflow-hidden">
                             <div className="w-10 h-10 flex justify-center">
-                                <img src="https://images.ctfassets.net/ww1ie0z745y7/2ZLgATkZvsbHjsnrPRzBYu/e592901dccc526622e39898e9271a7ef/Goldfish.jpeg?q=75" width="100%" alt="Rafhael Hailar"/>
+                                <img src={RafhaelHailarImage} width="100%" alt="Rafhael Hailar"/>
                             </div>
                         </button>
                     </div>
