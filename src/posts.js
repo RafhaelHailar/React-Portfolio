@@ -2,7 +2,7 @@ const posts = {
     "1": {
         "id": 1,
         "date": "July 29, 2023",
-        "description": "Don't be yourself if you don't know who you are yet, although you will never know who you are because you are always changing, so figure out who you want to change into then who you wanted to be, dont get swallowed by some fallacies. \n Image Credits: [https://visit.museum.wa.gov.au/maritime/sea-monsters-prehistoric-ocean-predators](Sea Monsters: Prehistoric Ocean Predators)",
+        "description": "Dont get swallowed by some fallacies. \n Image Credits: [https://visit.museum.wa.gov.au/maritime/sea-monsters-prehistoric-ocean-predators](Sea Monsters: Prehistoric Ocean Predators)",
         "media": "https://visit.museum.wa.gov.au/sites/default/files/styles/large_/public/2022-12/wamaritimemuseum-seamonsters-header-2000px.jpg?h=5f3ce5bb&itok=NV4bWpD6"
     },
     "2": {
