@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { getViewerEmail, setViewerEmail, createMessage, getMessages } from "./ChatContainer.js";
 import Message from "./Message";
 import RafhaelHailarImage from "../images/rafhael_hailar.jpg";
+import { stringLimitter } from "../utility";
 
 const buttonClassess = "w-6 h-6 rounded-full flex justify-center items-center transition-all ";
 const buttonClassVaryingW = buttonClassess.replace("w-6","");
@@ -160,7 +161,7 @@ const Chat = ({chatStates,chatDisplay,setChatDisplay}) => {
                     <div className="arrowLRight absolute rounded-lg bg-blackish text-xs w-36 right-full mr-3">
                         <div className="p-2" >
                             <div className="font-bold">Rafhael Hailar</div>
-                            <div className="text-grayte">You: Hello, Handome..</div>
+                            <div className="text-grayte">You: {stringLimitter(messages[messages.length - 1].message,15)}</div>
                         </div>
                     </div>
                 </div>

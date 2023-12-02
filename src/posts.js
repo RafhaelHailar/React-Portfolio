@@ -47,8 +47,17 @@ const posts = {
         "description": "Making a horror game in pure js",
         "media": ""
     },
-
-    
+   "9": {
+        "id": 9,
+        "group": true,
+        "date": "August 29, 2023",
+       "description": "Our mini project 2 named Strap in collaboration with my classmate in kodego bootcamp",
+       "groupPosts": [
+            {
+                "media": ": 
+            }
+        ]
+    },
 }
 const total = Object.keys(posts).length;
 

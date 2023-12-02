@@ -21,3 +21,8 @@ export function dateTimeFormat(dateObj) {
 
    return result;
 }
+
+
+export function stringLimitter(string,length) {
+   return string.slice(0,length) + "..."; 
+}
