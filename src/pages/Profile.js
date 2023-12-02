@@ -1,6 +1,6 @@
 import FBIcons from "../components/FBIcons";
 import { Link, Outlet, useLocation, Navigate } from "react-router-dom";
-import MY_CV from "./files/Rafhael_Hailar_CV.pdf";
+import MY_CV from "../files/Rafhael_Hailar_CV.pdf";
 import RafhaelHailarImage from "../images/rafhael_hailar.jpg";
 
 const Profile = ({setChatDisplay,chatStates}) => {

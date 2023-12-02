@@ -54,7 +54,7 @@ const posts = {
        "description": "Our mini project 2 named Strap in collaboration with my classmate in kodego bootcamp",
        "groupPosts": [
             {
-                "media": ": 
+                "media": "" 
             }
         ]
     },

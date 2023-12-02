@@ -1,6 +1,8 @@
 import FBIcons from "../FBIcons";
 import PostItem from "../PostItem";
 import {total} from "../../posts.js";
+import Kodego_Cert from "../../files/Kodego_Cert.png";
+import { Link } from "react-router-dom";
 
 const Posts = () => {
     return (
@@ -49,6 +51,11 @@ const Posts = () => {
                                     );
                                 })
                             }
+                        </div>
+                        <div class="my-5">
+                            <Link to="https://facebook.com" >
+                                <img src={Kodego_Cert} alt="My Kodego Certificate"/> 
+                            </Link>
                         </div>
                     </div>
                 </div>
