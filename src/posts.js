@@ -63,6 +63,12 @@ const posts = {
                 "media": ""
             }
         ]
+    },
+    "11": {
+        "id": 11,
+        "date": "December 1, 2023",
+        "description": "Made a copy of a dribble design, in a day hehe FLEX!.It might be laggy because I didnt want to reduce the image sizes, This only to showcase my animation skill and I want higher quality images\n Try it here [https://rafhaelhailar.github.io/Lugar/](Lugar)\n Source Code Here: [https://github.com/RafhaelHailar/Lugar](Lugar Source Code)\n Credits to: [https://dribbble.com/shots/10474951-Creative-Travel-Website-Design](Creative Travel Web Design| Dribble)",
+        "media": "https://raw.githubusercontent.com/RafhaelHailar/Lugar/master/assets/current_look.jpg"
     }
 };
 const total = Object.keys(posts).length;

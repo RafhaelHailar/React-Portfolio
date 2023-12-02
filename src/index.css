@@ -100,7 +100,7 @@ button:not(.no-hover):hover {
 }
 
 .profile-routes {
-  border-top: 1px solid rgba(255,255,255,.1);
+  border-top: 1px solid rgba(255,255,25511.1);
 }
 
 .profile-routes a {
@@ -148,12 +148,18 @@ button:not(.no-hover):hover {
 
 .project-cards > a > div{
   width: 100%;
-  height: 30rem;
+  max-height: 30rem;
   background: #18191A;
   border-radius: 15px;
   position: relative;
   transform-style: preserve-3d;
   overflow: hidden;
+}
+
+.project-cards > a.w-size {
+  grid-column: 2;
+  grid-column-start:1;
+  grid-column-end:3;
 }
 
 .project-cards > a > div::before {

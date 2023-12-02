@@ -52,27 +52,32 @@ const Projects = () => {
         () => {
             const project_cards = document.querySelectorAll(".project-cards > a");
             for (let i = 0;i < project_cards.length;i++) {
-                let card = project_cards[i];
+                const card = project_cards[i];
+                const card_image = card.querySelector("img");
+                
+                if (card_image.width > card_image.height) card.classList.add("w-size");
+                
+                
                 card.addEventListener("mousemove",e => onMouseHover(e,card));
                 card.addEventListener("mouseout",e => onMouseOut(e,card));
                 card.addEventListener("mouseover",() => onMouseEnter(card));
-            }
+            } 
         },[]
     );
 
     return (
         <div className="bg-blackish p-4 rounded">
             <div className="text-white text-">
-	    <a href="#" className="active hover:underline font-bold text-lg">
+	    <a href="!#" className="active hover:underline font-bold text-lg">
                     Projects
                 </a>
             </div>
             <div className="project-cards md:grid-cols-2 grid-cols-1">
                 { rafProjects.map((id,idx) => {
                     const {media} = posts[id];
-                    return <Link key={idx} to={`/preview?id=${id}`}>
+                    return <Link key={idx} to={`/preview?id=${id}`} className={media.width > media.height ? "w-size" : ""}>
                                 <div>
-                                    <img src={media} width="100%" />
+                                    <img src={media} width="100%" alt="Project" />
                                 </div>
                             </Link>
                 })}
