@@ -53,7 +53,7 @@ const Posts = () => {
                             }
                         </div>
                         <div class="my-5">
-                            <Link to="https://facebook.com" >
+                            <Link to="/preview?id=5" >
                                 <img src={Kodego_Cert} alt="My Kodego Certificate"/> 
                             </Link>
                         </div>

@@ -24,41 +24,47 @@ const posts = {
         "media": "https://raw.githubusercontent.com/RafhaelHailar/Long-Stick/master/images/current_look.jpeg"
     },
     "5": {
-        "id": 5,
+        "id": "5",
+        "date": "October 28, 2023",
+        "description": "Finished Kodego Bootcamp,I have learned a lot from the bootcamp like, React, PHP, Laravel and Databases and also being professional.",
+        "media": "https://raw.githubusercontent.com/RafhaelHailar/React-Portfolio/master/src/files/Kodego_Cert.png"
+    },
+    "6": {
+        "id": 6,
         "date": "October 29, 2023",
         "description": "Develop a simple website, A rental website where user can rent a girlfriend.\nMade with HTML,CSS and Materialize.\n Try it here: [https://cwd-b-11-rafhaelhailar.netlify.app/](RentGal!) \n Source Code here: [https://github.com/RafhaelHailar/RentGal-_SAMPLE](RentGal! Source Code)",
         "media": "https://raw.githubusercontent.com/RafhaelHailar/RentGal-_SAMPLE/master/images/current_look.jpeg"
     },
-    "6": {
-        "id": 6,
+    "7": {
+        "id": 7,
         "date": "November 1, 2023",
         "description": "Sea this? (PUN INTENDED)\n\nImage Credits: [https://climate.nasa.gov/explore/ask-nasa-climate/2990/sea-level-101-what-determines-the-level-of-the-sea/](Sea Level 101: What Determines the Level of the Sea?)",
         "media": "https://raw.githubusercontent.com/RafhaelHailar/React-Portfolio/master/src/images/image-sea.jpg"
-    }, 
-    "7": {
-        "id": 7,
+    },
+    "8": {
+        "id": 8,
         "date": "November 1, 2023",
         "description": "I am going to do some part of my portfolio first then create new website. PRACTICE PRACTICE PRACTICE",
         "media": ""
     },
-    "8": {
-        "id": 8,
+    "9": {
+        "id": 9,
         "date": "November 2, 2023",
         "description": "Making a horror game in pure js",
         "media": ""
     },
-   "9": {
-        "id": 9,
+    "10": {
+        "id": 10,
         "group": true,
         "date": "August 29, 2023",
-       "description": "Our mini project 2 named Strap in collaboration with my classmate in kodego bootcamp",
-       "groupPosts": [
+        "description": "Our mini project 2 named Strap in collaboration with my classmate in kodego bootcamp",
+        "groupPosts": [
             {
-                "media": "" 
+                "media": ""
             }
         ]
-    },
-}
+    }
+};
 const total = Object.keys(posts).length;
 
 export {posts,total};
