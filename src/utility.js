@@ -6,7 +6,7 @@ function formatTime(time) {
 }
 
 export function dateTimeFormat(dateObj) {
-   const [day,month,date,year,time] = dateObj.toString().split(" ");
+   const [day,month,,year,time] = dateObj.toString().split(" ");
    const currDate = new Date();
 
    let result = formatTime(time);
@@ -24,5 +24,5 @@ export function dateTimeFormat(dateObj) {
 
 
 export function stringLimitter(string,length) {
-   return string.slice(0,length) + "..."; 
+   return string.slice(0,length) + (string.length > length ? "..." : ""); 
 }
