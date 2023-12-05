@@ -5,26 +5,19 @@ import Profile from "./pages/Profile";
 import { Posts, About, Projects } from "./components/Profile";
 import Preview from "./pages/Preview";
 import { Contacts, Details, Overview, PLived, WnE } from "./components/Profile/AboutComp";
-import { useEffect, useRef, useState } from "react";
 import Chat from "./components/Chat";
 
 function App() {
-  const ChatDisplayState = {
-     hidden: "hidden",
-     shown: "shown",
-     minimized: "minimize"
-  }
-
-  const [chatDisplay,setChatDisplay] = useState(ChatDisplayState.hidden);
+  const setChatDisplay = {}; 
 
   return (
     <div className="App flex flex-col items-center ">
-          <Chat setChatDisplay={setChatDisplay}  chatDisplay={chatDisplay} chatStates={ChatDisplayState}/>
-          <NavigationBar setChatDisplay={setChatDisplay} chatStates={ChatDisplayState} />
+          <Chat setChatDisplay={setChatDisplay} />
+          <NavigationBar setChatDisplay={setChatDisplay}/>
           <Routes>
               <Route path="/" element={<Navigate to="/rafhael/"/>} />
               <Route path="/preview" element={<Preview/>} />
-              <Route path="/rafhael" element={<Profile setChatDisplay={setChatDisplay} chatStates={ChatDisplayState}/>}>
+              <Route  path="/rafhael" element={<Profile setChatDisplay={setChatDisplay} />}>
                 <Route path="posts" element={<Posts/>} />
                 <Route path="projects" element={<Projects/>} />
                 <Route path="about" element={

@@ -1,40 +1,79 @@
 import { Link } from "react-router-dom";
 import FBIcons from "./FBIcons";
 import { useState, useEffect, useRef } from "react";
-import { getViewerEmail, setViewerEmail, createMessage, getMessages } from "./ChatContainer.js";
-import Message from "./Message";
+import { getViewerEmail, setViewerEmail, createMessage, getMessages} from "./ChatContainer.js";
 import RafhaelHailarImage from "../images/rafhael_hailar.jpg";
 import { stringLimitter } from "../utility";
+import Message from "./Message";
 
 const buttonClassess = "w-6 h-6 rounded-full flex justify-center items-center transition-all ";
 const buttonClassVaryingW = buttonClassess.replace("w-6","");
 
-const Chat = ({chatStates,chatDisplay,setChatDisplay}) => {
+const ChatDisplayState = {
+     hidden: "hidden",
+     shown: "shown",
+     minimized: "minimize"
+}
+
+/*
+ *  Pure / Side Effect function
+ *  @params {JS regular object} container
+ *  @params {REACT state setter} setDisplay
+ *
+ *  @result --create the handlers for the state of display for the chat
+*/
+function chatDisplayHandlers(container,setDisplay) {
+    container.show = function() {
+        setDisplay(ChatDisplayState.shown);
+    }
+
+    container.hide = function() {
+        setDisplay(ChatDisplayState.hidden);
+    }
+
+    container.minimize = function() {
+        setDisplay(ChatDisplayState.minimized);
+    }
+}
+
+const Chat = ({setChatDisplay}) => {
   const [isTyping,setIsTyping] = useState(false); 
   const [buttonColor,setButtonColor] = useState("rgba(255,255,255,0.3)");
+  const [chatDisplay,setDisplay] = useState(ChatDisplayState.hidden);
 
-  const [isEmailSet,setIsEmailSet] = useState(getViewerEmail() !== null);
-  
+  const [isEmailSet,setIsEmailSet] = useState(getViewerEmail !== "");
+
   const [messages,setMessages] = useState(getMessages());
- 
   const messagesContainer = useRef();
+
+  //set up the handlers
+  useEffect(() => {
+    chatDisplayHandlers(setChatDisplay,setDisplay);
+  },[setChatDisplay]);
+
   const chatForm = useRef();
   const chatInput = useRef();
-  useEffect(() => {
-     if (chatDisplay === chatStates.shown && isEmailSet) chatInput.current.focus();
-  },[chatDisplay,chatStates.shown,isEmailSet]);
- 
+
   useEffect(() => {
     messagesContainer.current.scrollTo(0,messagesContainer.current.scrollHeight);
   },[messages,chatDisplay]);
 
+  useEffect(() => {
+     if (chatDisplay === ChatDisplayState.shown && isEmailSet) chatInput.current.focus();
+  },[chatDisplay,isEmailSet]);
+ 
   function handleSetEmail(event) {
       event.preventDefault();
       setIsEmailSet(setViewerEmail(event.target.email.value));
   }
+
+  function isNotShown() {
+    return chatDisplay !== ChatDisplayState.shown;
+  }
+
    return (
     <div className="fixed flex h-96 right-0 bottom-0 rounded text-white z-[100]">
-        <div tabIndex={1}  className={"flex flex-col h-full flex-1 relative  bg-blackish " + (chatDisplay !== chatStates.shown && "hidden")}  style={{boxShadow: "0 0 2px rgba(0,0,0,0.8)"}}  onFocus={() => setButtonColor("#0866FF")} onBlur={() => setButtonColor("rgba(255,255,255, 0.3)")}>   
+        <div tabIndex={1}  className={"flex flex-col h-full flex-1 relative  bg-blackish " + (isNotShown() && "hidden")}  style={{boxShadow: "0 0 2px rgba(0,0,0,0.8)"}}  onFocus={() => setButtonColor("#0866FF")} onBlur={() => setButtonColor("rgba(255,255,255, 0.3)")}>   
           <div className="flex justify-between items-center" style={{borderBottom: "1px solid rgba(255,255,255,0.08)"}}>
             <div className="relative flex items-center ">
               <button className="absolute h-full py-1.5 px-1.5">
@@ -54,10 +93,10 @@ const Chat = ({chatStates,chatDisplay,setChatDisplay}) => {
               <button className={buttonClassess}>
                 <FBIcons icon="videoCall" color={buttonColor} size=".8rem" />
               </button>
-              <button className={buttonClassess} onClick={() => setChatDisplay(chatStates.minimized)}>
+              <button className={buttonClassess} onClick={() => setChatDisplay.minimize()}>
                 <FBIcons icon="minimize" size="1.5rem" color={buttonColor}/>
               </button>
-              <button className={buttonClassess} onClick={() => setChatDisplay(chatStates.hidden)}>
+              <button className={buttonClassess} onClick={() => setChatDisplay.hide()}>
                 <FBIcons icon="closeChat" color={buttonColor} size="1.2rem"/>
               </button>
             </div>
@@ -69,7 +108,7 @@ const Chat = ({chatStates,chatDisplay,setChatDisplay}) => {
                            return <Message key={index} id={index} />
                        })
                   }
-               </div>
+              </div>
               <div className={"pl-1 text-[0.5rem] text-grayte " + (!isEmailSet && "hidden")}> 
                 <span>{getViewerEmail()}</span>   
                 <button onClick={()  => setIsEmailSet(false)} className="ml-0.5 text-blueish no-hover"> change email</button>
@@ -144,15 +183,15 @@ const Chat = ({chatStates,chatDisplay,setChatDisplay}) => {
        </div>
        <div className="flex flex-col items-end justify-end p-5">
          <div>
-            <div className={"relative flex " + (chatDisplay !== chatStates.minimized && "hidden")} >
+            <div className={"relative flex " + (chatDisplay !== ChatDisplayState.minimized && "hidden")} >
                 <div className="userChatMin">
-                    <button className="rounded-full overflow-hidden" onClick={() => setChatDisplay(chatStates.shown)}>
+                    <button className="rounded-full overflow-hidden" onClick={() => setChatDisplay.show()}>
                       <div className="w-10 h-10 rounded-full flex">
                          <img src={RafhaelHailarImage} alt="Rafhael Hailar"  width="100%" />
                       </div>
                     </button>
                     <div className="hidden">
-                        <button className="flex rounded-full bg-blackish absolute -right-1.5 top-0 -mt-1" onClick={() => setChatDisplay(chatStates.hidden)}>
+                        <button className="flex rounded-full bg-blackish absolute -right-1.5 top-0 -mt-1" onClick={() => setChatDisplay.hide()}>
                             <FBIcons icon="close" size="0.5" />
                         </button>
                     </div>
@@ -169,7 +208,7 @@ const Chat = ({chatStates,chatDisplay,setChatDisplay}) => {
          </div>
          <div>
              <div>
-                    <button className="bg-grayish rounded-full overflow-hidden" onClick={() => setChatDisplay(chatStates.shown)} >
+                    <button className="bg-grayish rounded-full overflow-hidden" onClick={() => setChatDisplay.show()} >
                       <div className="w-10 h-10 items-center justify-center rounded-full flex">
                           <FBIcons icon="writeMessage" size={0.8} />
                       </div>

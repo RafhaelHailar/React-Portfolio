@@ -3,8 +3,28 @@ import PostItem from "../PostItem";
 import {total} from "../../posts.js";
 import Kodego_Cert from "../../files/Kodego_Cert.png";
 import { Link } from "react-router-dom";
+import { useRef, useEffect } from "react";
 
 const Posts = () => {
+    const postsContainer = useRef();
+    const postsGroup = 0;
+
+    useEffect(() => {
+        console.log(postsContainer.current.getBoundingClientRect().height);
+    },[]);
+
+    function handleScroll() {
+        const scrolled = window.scrollY;
+    }
+
+    function displayGroup() {
+        for (let i = postsGroup * 3;i < postsGroup * 3 + 3;i++) {
+            postsContainer.current.appendChild(<button>HELLO</button>); 
+        }
+    }
+
+    window.addEventListener("scroll",handleScroll);
+
     return (
         <div>
             <div className="flex-col lg:flex-row items-center lg:items-stretch flex gap-3">
@@ -59,7 +79,7 @@ const Posts = () => {
                         </div>
                     </div>
                 </div>
-                <div className="lg:w-3/5 w-full lg:min-w-0 flex flex-col gap-3"> 
+                <div ref={postsContainer} className="lg:w-3/5 w-full lg:min-w-0 flex flex-col gap-3"> 
                     <div className="bg-blackish rounded py-1.5 px-3 flex justify-between text-white items-center"> 
                         <h1 className="font-extrabold">Posts</h1>
                         <button className="flex items-center text-xs font-bold gap-1.5 bg-grayish px-2.5 py-1.5 rounded">
@@ -67,12 +87,13 @@ const Posts = () => {
                             <span>Filters</span>
                         </button>
                     </div>
-                    {
+                    { /*
                         new Array(total).fill(null).map((_,id) => {
                             return <PostItem id={id + 1} key={id}></PostItem>
                         })
+                      */
                     }
-                </div>
+               </div>
             </div>
         </div>
     );

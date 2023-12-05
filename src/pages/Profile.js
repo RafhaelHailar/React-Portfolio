@@ -3,7 +3,7 @@ import { Link, Outlet, useLocation, Navigate } from "react-router-dom";
 import MY_CV from "../files/Rafhael_Hailar_CV.pdf";
 import RafhaelHailarImage from "../images/rafhael_hailar.jpg";
 
-const Profile = ({setChatDisplay,chatStates}) => {
+const Profile = ({setChatDisplay}) => {
     const location = useLocation();
     const currentLocation = location.pathname.replace("/rafhael/","");
     return (
@@ -18,7 +18,7 @@ const Profile = ({setChatDisplay,chatStates}) => {
 			<div className="px-7">
 			    <div className="lg:h-20 flex lg:mt-0 -mt-16 lg:justify-between lg:flex-row flex-col justify-start items-center lg:items-end">
                         <div className="flex lg:flex-row flex-col justify-between items-center lg:items-end gap-4">
-                            <button className="rounded-full overflow-hidden">
+                            <button onClick={setChatDisplay.show} className="rounded-full overflow-hidden">
                                     <div className="rounded-full bg-black" style={{padding: "0.2rem"}}>
                                         <div className="bg-lime-600 rounded-full overflow-hidden flex align-center justify-center" style={{width: "8.5rem",height: "8.5rem"}}>
                                         <img src={RafhaelHailarImage} width="100%" alt="Rafhael Hailar"/>
@@ -42,7 +42,7 @@ const Profile = ({setChatDisplay,chatStates}) => {
                                     Add friend
                                     </button>
                                 </a>
-                                <button onClick={() => setChatDisplay(chatStates.shown)} className="bg-grayish px-2.5 py-1.5 rounded flex items-center gap-1">
+                                <button onClick={() => setChatDisplay.show()} className="bg-grayish px-2.5 py-1.5 rounded flex items-center gap-1">
                                     <FBIcons icon="messenger" size="1em" color="white"></FBIcons>
                                     Message
                                 </button>
