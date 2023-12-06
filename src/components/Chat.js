@@ -41,7 +41,7 @@ const Chat = ({setChatDisplay}) => {
   const [buttonColor,setButtonColor] = useState("rgba(255,255,255,0.3)");
   const [chatDisplay,setDisplay] = useState(ChatDisplayState.hidden);
 
-  const [isEmailSet,setIsEmailSet] = useState(getViewerEmail !== "");
+  const [isEmailSet,setIsEmailSet] = useState(getViewerEmail() !== "" && getViewerEmail() !== null && getViewerEmail() !== undefined);
 
   const [messages,setMessages] = useState(getMessages());
   const messagesContainer = useRef();
@@ -200,7 +200,9 @@ const Chat = ({setChatDisplay}) => {
                     <div className="arrowLRight absolute rounded-lg bg-blackish text-xs w-36 right-full mr-3">
                         <div className="p-2" >
                             <div className="font-bold">Rafhael Hailar</div>
-                            <div className="text-grayte">You: {stringLimitter(messages[messages.length - 1].message,15)}</div>
+                            {   messages.length > 0 &&
+                                <div className="text-grayte">You: {stringLimitter(messages[messages.length - 1].message,15)}</div>
+                            }
                         </div>
                     </div>
                 </div>

@@ -87,11 +87,11 @@ const Posts = () => {
                             <span>Filters</span>
                         </button>
                     </div>
-                    { 
+                    {   
                         new Array(total).fill(null).map((_,id) => {
                             return <PostItem id={id + 1} key={id}></PostItem>
                         })
-                      
+                       
                     }
                </div>
             </div>
