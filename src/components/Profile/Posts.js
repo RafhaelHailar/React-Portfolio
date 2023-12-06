@@ -3,27 +3,35 @@ import PostItem from "../PostItem";
 import {total} from "../../posts.js";
 import Kodego_Cert from "../../files/Kodego_Cert.png";
 import { Link } from "react-router-dom";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
+
+
+let containerY;
 
 const Posts = () => {
     const postsContainer = useRef();
-    const postsGroup = 0;
+    const [postsGroup,setPostsGroup] = useState(0);
 
     useEffect(() => {
-        console.log(postsContainer.current.getBoundingClientRect().height);
+        containerY = postsContainer.current.getBoundingClientRect().y;
+        window.addEventListener("scroll",handleScroll);
     },[]);
 
     function handleScroll() {
+        if (!postsContainer.current) return;
+
         const scrolled = window.scrollY;
+        const deviceHeight = window.innerHeight;
+        //container height and y
+        const {height} = postsContainer.current.getBoundingClientRect();
+
+        // if the bottom of the device screen hit the bottom of the cointaner - some value;
+        if ((scrolled + deviceHeight) >= (containerY + height)) setPostsGroup(value => value + 1);
     }
 
-    function displayGroup() {
-        for (let i = postsGroup * 3;i < postsGroup * 3 + 3;i++) {
-            postsContainer.current.appendChild(<button>HELLO</button>); 
-        }
-    }
-
-    window.addEventListener("scroll",handleScroll);
+    const groupLength = 3;
+    let postsTotal = groupLength + postsGroup * groupLength;
+    postsTotal = postsTotal > total ? total : postsTotal;
 
     return (
         <div>
@@ -88,7 +96,7 @@ const Posts = () => {
                         </button>
                     </div>
                     {   
-                        new Array(total).fill(null).map((_,id) => {
+                        new Array(postsTotal).fill(null).map((_,id) => {
                             return <PostItem id={id + 1} key={id}></PostItem>
                         })
                        

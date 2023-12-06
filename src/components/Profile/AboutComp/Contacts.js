@@ -27,7 +27,9 @@ const Contacts = () => {
                 <div className="font-bold mb-3">Basic info</div>
                 <div className="text-grayte font-bold text-xs">
                    <div className="flex gap-3" >
-                       <FBIcons icon="basicInfo" size="18rem"/>
+                        <span>
+                            <FBIcons icon="basicInfo" size="18rem"/>
+                        </span>
                        <span>A competent and passionate web developer who is experience in making a responsive and funtioning websites.</span>
                    </div>
                 </div>
