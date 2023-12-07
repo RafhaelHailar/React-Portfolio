@@ -10,19 +10,19 @@ const Preview = () => {
 
     if (id === "" || id === null || posts[id].media === "") return <Navigate to="/"></Navigate>
 
-    const { isGroup } = posts[id];
+    const { isGroup, groupPosts } = posts[id];
 
     //index of group item
     const index = searchParams.get("index");
-
-    const post = isGroup ? posts[id].groupPosts[index] : posts[id];
+    console.log(index + 1 % groupPosts.length); 
+    const post = isGroup ? groupPosts[index] : posts[id];
 
     return (
         <div className="md:static z-50  w-full">
             <div className="md:w-2/4 lg:w-3/4 md:absolute left-0 top-0 z-50 h-full bg-black flex justify-center items-center overflow-hidden">
                 <div className="px-3 md:py-2 py-1.5 absolute top-0 left-0 flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                        <button className="w-8 h-8 rounded-full flex justify-center items-center bg-blackwash" onClick={() => navigate(-1)}>
+                    <div className="flex items-center gap-2 z-10">
+                        <button className="w-8 h-8 rounded-full flex justify-center items-center bg-blackwash" onClick={() => navigate("/")}>
                             <FBIcons icon="close" size="0.8"></FBIcons>
                         </button>
                         <Link to="/">
@@ -33,6 +33,14 @@ const Preview = () => {
                         
                     </div>
                 </div>
+                {
+                    isGroup &&
+                    <Link  className="absolute left-0 px-3 hover:px-2 h-full flex justify-center items-center active"  to={`?id=${id}&index=${((groupPosts.length - 1) + Number(index)) % groupPosts.length}`} style={{background: "rgba(0, 0, 0, .02)",transition: "500ms",backdropFilter: "brightness(90%) invert(5%) "}}>
+                        <button className="w-9 h-9 bg-blackite rounded-full flex justify-center items-center" style={{transform: "rotate(180deg)"}} >
+                             <FBIcons icon="arrow" size="0.7" />
+                        </button>
+                    </Link>
+                }
                 <div>
                     <img src={post.media} alt="post" onLoad={(event) => {
                         const image = event.target;
@@ -44,6 +52,14 @@ const Preview = () => {
                         image.parentElement.className = addClass;
                     }}/>
                 </div>
+                {
+                    isGroup &&
+                    <Link  className="absolute right-0 px-3 hover:px-2 h-full flex justify-center items-center active"  to={`?id=${id}&index=${(Number(index) + 1) % groupPosts.length}`} style={{background: "rgba(0, 0, 0, .02)",transition: "500ms",backdropFilter: "brightness(90%) invert(5%) "}}>
+                        <button className="w-9 h-9 bg-blackite rounded-full flex justify-center items-center"  >
+                            <FBIcons icon="arrow" size="0.7" />
+                        </button>
+                    </Link>
+                }
             </div>
             <div className="md:absolute md:left-2/4  lg:left-3/4 lg:w-1/4 pt-3 text-grayte bg-blackish overflow-scroll preview-right" style={{height: "94vh"}}>
                 <PostStructure  

@@ -38,6 +38,46 @@ const posts = {
     "7": {
         "id": 7,
         "isGroup": true,
+        "date": "September 12, 2023",
+        "description": "Our capstone project named GVH Hospital in collaboration with my classmate in kodego bootcamp",
+        "groupPosts": [
+            {
+                "media": "https://raw.githubusercontent.com/jesninvence/GVH_HOSPITAL/master/src/images/landing_page.jpeg",
+                "description": "Landing Page"
+            },
+            {
+                "media": "https://raw.githubusercontent.com/jesninvence/GVH_HOSPITAL/master/src/images/signup.jpeg",
+                "description": "Sign up Page"
+            },
+            {
+                "media": "https://raw.githubusercontent.com/jesninvence/GVH_HOSPITAL/master/src/images/login.jpeg",
+                "description": "Log in Page"
+            },           
+            {
+                "media": "https://raw.githubusercontent.com/jesninvence/GVH_HOSPITAL/master/src/images/dashboard.jpeg",
+                "description": "Dashboard"
+            },           
+            {
+                "media": "https://raw.githubusercontent.com/jesninvence/GVH_HOSPITAL/master/src/images/inbox.png",
+                "description": "Inbox"
+            },           
+            {
+                "media": "https://raw.githubusercontent.com/jesninvence/GVH_HOSPITAL/master/src/images/doctors.jpeg",
+                "description": "Doctors"
+            },           
+            {
+                "media": "https://raw.githubusercontent.com/jesninvence/GVH_HOSPITAL/master/src/images/book_step1.jpeg",
+                "description": "Booking Step 1"
+            },           
+            {
+                "media": "https://raw.githubusercontent.com/jesninvence/GVH_HOSPITAL/master/src/images/book_step2.jpeg",
+                "description": "Booking Step 2"
+            }   
+        ]
+    },
+    "8": {
+        "id": 8,
+        "isGroup": true,
         "date": "August 29, 2023",
         "description": "Our mini project 2 named Strap in collaboration with my classmate in kodego bootcamp",
         "groupPosts": [
@@ -59,26 +99,26 @@ const posts = {
             }   
         ]
     },
-    "8": {
-        "id": 8,
+    "9": {
+        "id": 9,
         "date": "August 13, 2023",
         "description": "Created a simple e commerce website that sells cool stuff.\nMade with HTML, CSS, Bootstrap, and JS. \nTry it here: [https://rafhaelhailar.github.io/Long-Stick/](Long Stick) \n Source Code here: [https://github.com/RafhaelHailar/Long-Stick](Long Stick Source Code) ",
         "media": "https://raw.githubusercontent.com/RafhaelHailar/Long-Stick/master/images/current_look.jpeg"
     },
-    "9": {
-        "id": 9,
+    "10": {
+        "id": 10,
         "date": "August 2, 2023",
         "description": "Look into your eyes\n Image Credits: [https://pics.alphacoders.com/pictures/view/1338](Bored Fish)",
         "media": "https://i.imgur.com/4VAD9Pw.jpeg"
     },
-    "10": {
-        "id": 10,
+    "11": {
+        "id": 11,
         "date": "July 30, 2023",
         "description": "Follow my github if you want to see some cool things hehehe\n [https://github.com/RafhaelHailar](Rafhael Hailar Github Account) ",
         "media": ""
     },
-    "11": {
-        "id": 11,
+    "12": {
+        "id": 12,
         "date": "July 29, 2023",
         "description": "Dont get swallowed by some fallacies. \n Image Credits: [https://visit.museum.wa.gov.au/maritime/sea-monsters-prehistoric-ocean-predators](Sea Monsters: Prehistoric Ocean Predators)",
         "media": "https://visit.museum.wa.gov.au/sites/default/files/styles/large_/public/2022-12/wamaritimemuseum-seamonsters-header-2000px.jpg?h=5f3ce5bb&itok=NV4bWpD6"

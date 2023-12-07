@@ -16,10 +16,18 @@ const PostStructure = ({id,noMedia}) => {
    (function() {
         if (!isGroup) return;
         let target = 0;
-            for (let i = 0;i < groupPosts.length;i++) {
-                 let item = <Link key={i} className="h-64 rounded-none overflow-hidden flex items-center bg-blackish" to={`/preview?id=${id}&index=${i}`}>
-                                <div> 
+        const total = groupPosts.length
+            for (let i = 0;i < total;i++) {
+                 let item = <Link key={i} className=" flex-1 rounded-none overflow-hidden relative bg-blackish" to={`/preview?id=${id}&index=${i}`} style={{border: "1px solid rgba(255,255,255,0.2)"}}>
+                                <div className="h-full flex items-center"> 
                                     <img src={groupPosts[i].media} alt="media post" />
+                                    
+                                    {
+                                        i === 4 && total > 5 &&
+                                        <div className="flex justify-center items-center text-white font-bold text-2xl absolute w-full h-full" style={{background: "rgba(0,0,0,.7)"}}>
+                                            +{total - 5} 
+                                        </div>
+                                    }
                                 </div>
                             </Link>
                  mediaContainers[target].push(item);
@@ -27,7 +35,7 @@ const PostStructure = ({id,noMedia}) => {
                  else if (i === 3) {
                    let second =  mediaContainers[1].shift();
                    mediaContainers[0].push(second);
-                 }
+                 } else if (i === 4) break;
             }
    })();
     useEffect(
