@@ -74,8 +74,9 @@ const Projects = () => {
             </div>
             <div className="project-cards md:grid-cols-2 grid-cols-1">
                 { rafProjects.map((id,idx) => {
-                    const {media} = posts[id];
-                    return <Link key={idx} to={`/preview?id=${id}`} className={media.width > media.height ? "w-size" : ""}>
+                    const {isGroup, groupPosts} = posts[id];
+                    const media = isGroup ? groupPosts[0].media : posts[id].media;
+                    return <Link key={idx} to={`/preview?id=${id}${isGroup ? "&index=1" : ""}`} >
                                 <div>
                                     <img src={media} width="100%" alt="Project" />
                                 </div>

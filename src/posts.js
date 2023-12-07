@@ -37,13 +37,26 @@ const posts = {
     },
     "7": {
         "id": 7,
-        "group": true,
+        "isGroup": true,
         "date": "August 29, 2023",
         "description": "Our mini project 2 named Strap in collaboration with my classmate in kodego bootcamp",
         "groupPosts": [
             {
-                "media": ""
-            }
+                "media": "https://raw.githubusercontent.com/jesninvence/Strap/codev0.3.258/img/landing_page.jpeg",
+                "description": "Landing Page"
+            },
+            {
+                "media": "https://raw.githubusercontent.com/jesninvence/Strap/codev0.3.258/img/item_preview.jpeg",
+                "description": "Item Preview"
+            },
+            {
+                "media": "https://raw.githubusercontent.com/jesninvence/Strap/codev0.3.258/img/cart.png",
+                "description": "Cart"
+            },           
+            {
+                "media": "https://raw.githubusercontent.com/jesninvence/Strap/codev0.3.258/img/search.png",
+                "description": "Search"
+            }   
         ]
     },
     "8": {

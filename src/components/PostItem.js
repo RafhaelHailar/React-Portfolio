@@ -1,10 +1,9 @@
-import FBIcons from "./FBIcons";
 import PostStructure from "./PostStructure";
 
 const PostItem = ({id}) => {
     return (
         <div className="bg-blackish rounded py-1.5">
-            <PostStructure id={id}></PostStructure>
+            <PostStructure id={id} />
             <div className="px-3 text-xs text-grayte">
                 <div className="flex items-center pt-2 gap-1">
                     <div>

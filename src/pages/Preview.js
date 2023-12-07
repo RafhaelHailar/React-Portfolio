@@ -9,6 +9,14 @@ const Preview = () => {
     const navigate = useNavigate();
 
     if (id === "" || id === null || posts[id].media === "") return <Navigate to="/"></Navigate>
+
+    const { isGroup } = posts[id];
+
+    //index of group item
+    const index = searchParams.get("index");
+
+    const post = isGroup ? posts[id].groupPosts[index] : posts[id];
+
     return (
         <div className="md:static z-50  w-full">
             <div className="md:w-2/4 lg:w-3/4 md:absolute left-0 top-0 z-50 h-full bg-black flex justify-center items-center overflow-hidden">
@@ -26,7 +34,7 @@ const Preview = () => {
                     </div>
                 </div>
                 <div>
-                    <img src={posts[id].media} alt="post" onLoad={(event) => {
+                    <img src={post.media} alt="post" onLoad={(event) => {
                         const image = event.target;
                         const width = image.width;
                         const height = image.height;

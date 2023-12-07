@@ -1,13 +1,35 @@
 import FBIcons from "./FBIcons";
 import {posts} from "../posts";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useEffect, useRef } from "react";
 import RafhaelHailarImage from "../images/rafhael_hailar.jpg";
 
 const PostStructure = ({id,noMedia}) => {
-    let {date,description,media} = posts[id];
-    const descriptor = useRef();
+    let {date,description,media,isGroup,groupPosts} = posts[id];
+    const descriptor = useRef(),
+          location = useLocation(),
+          paths = location.pathname.split("/"),
+          currPath = paths[paths.length - 1],
+          isPreview = currPath === "preview",
+          mediaContainers = [[],[]];
 
+   (function() {
+        if (!isGroup) return;
+        let target = 0;
+            for (let i = 0;i < groupPosts.length;i++) {
+                 let item = <Link key={i} className="h-64 rounded-none overflow-hidden flex items-center bg-blackish" to={`/preview?id=${id}&index=${i}`}>
+                                <div> 
+                                    <img src={groupPosts[i].media} alt="media post" />
+                                </div>
+                            </Link>
+                 mediaContainers[target].push(item);
+                 if (i === 0) target++;
+                 else if (i === 3) {
+                   let second =  mediaContainers[1].shift();
+                   mediaContainers[0].push(second);
+                 }
+            }
+   })();
     useEffect(
         () => {
             let descriptionFormatted = description.replaceAll("\n",'<br/>');
@@ -15,6 +37,8 @@ const PostStructure = ({id,noMedia}) => {
                     return `<a href='${$1}' target='_blank'>${$2}</a>`;
             });
             descriptor.current.innerHTML = descriptionFormatted;
+
+            
         },[description]
     );
 
@@ -44,12 +68,28 @@ const PostStructure = ({id,noMedia}) => {
 
             </div>
             {
-                media && !noMedia &&
-                <div className="max-h-screen overflow-hidden">
-                    <Link to={"/preview?id=" + id}>
-                        <img src={media} className="w-full" alt="media post" />
-                    </Link>
-                </div>
+                //preview right part no media 
+                !noMedia &&  
+                    ((media || isGroup) && 
+                    <div className="flex max-h-screen overflow-hidden gap-0.5 bg-black p-0.5">
+                       {
+                           (!isPreview && isGroup) ?
+                                <>
+                                    <div className="flex flex-col gap-0.5">
+                                         {mediaContainers[0]}
+                                    </div>
+                                    <div className="flex flex-col gap-0.5">
+                                        {mediaContainers[1]}
+                                    </div>
+                                </>
+                            :
+                                media &&  
+                                <Link to={"/preview?id=" + id}>
+                                    <img src={media} className="w-full" alt="media post" />
+                                </Link>
+                       }
+                    </div>
+                    )
             }
             <div className="px-3 text-grayte text-xs ">
                 <div className="flex justify-between pb-2 pt-1">

@@ -197,3 +197,4 @@ button:not(.no-hover):hover {
 .hiddenTools:hover > div.invisible {
     visibility: visible !important;
  }
+
