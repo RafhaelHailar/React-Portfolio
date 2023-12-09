@@ -14,7 +14,6 @@ const Preview = () => {
 
     //index of group item
     const index = searchParams.get("index");
-    console.log(index + 1 % groupPosts.length); 
     const post = isGroup ? groupPosts[index] : posts[id];
 
     return (
