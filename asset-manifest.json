@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/React-Portfolio/static/css/main.10032999.css",
-    "main.js": "/React-Portfolio/static/js/main.cfa367ea.js",
+    "main.js": "/React-Portfolio/static/js/main.a4c5eb3e.js",
     "static/js/787.1ed0c42c.chunk.js": "/React-Portfolio/static/js/787.1ed0c42c.chunk.js",
     "static/media/Rafhael_Hailar_CV.pdf": "/React-Portfolio/static/media/Rafhael_Hailar_CV.35edc18fab60a7835d21.pdf",
     "static/media/Kodego_Cert.png": "/React-Portfolio/static/media/Kodego_Cert.d72c5ec3735612a91c7a.png",
     "index.html": "/React-Portfolio/index.html",
     "main.10032999.css.map": "/React-Portfolio/static/css/main.10032999.css.map",
-    "main.cfa367ea.js.map": "/React-Portfolio/static/js/main.cfa367ea.js.map",
+    "main.a4c5eb3e.js.map": "/React-Portfolio/static/js/main.a4c5eb3e.js.map",
     "787.1ed0c42c.chunk.js.map": "/React-Portfolio/static/js/787.1ed0c42c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.10032999.css",
-    "static/js/main.cfa367ea.js"
+    "static/js/main.a4c5eb3e.js"
   ]
 }
