@@ -6,6 +6,11 @@ import RafhaelHailarImage from "../images/rafhael_hailar.jpg";
 import { stringLimitter } from "../utility";
 import Message from "./Message";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { 
+    faCommentDots
+} from "@fortawesome/free-solid-svg-icons";
+
 const buttonClassess = "w-6 h-6 rounded-full flex justify-center items-center transition-all ";
 const buttonClassVaryingW = buttonClassess.replace("w-6","");
 
@@ -17,8 +22,8 @@ const ChatDisplayState = {
 
 /*
  *  Pure / Side Effect function
- *  @params {JS regular object} container
- *  @params {REACT state setter} setDisplay
+ *  @param {object} container
+ *  @param {REACT state setter} setDisplay
  *
  *  @result --create the handlers for the state of display for the chat
 */
@@ -212,7 +217,7 @@ const Chat = ({setChatDisplay}) => {
              <div>
                     <button className="bg-grayish rounded-full overflow-hidden" onClick={() => setChatDisplay.show()} >
                       <div className="w-10 h-10 items-center justify-center rounded-full flex">
-                          <FBIcons icon="writeMessage" size={0.8} />
+                          <FontAwesomeIcon icon={faCommentDots} style={{color: "rgba(255,255,255,0.4)"}} />
                       </div>
                     </button>
               </div>

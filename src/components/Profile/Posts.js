@@ -26,7 +26,7 @@ const Posts = () => {
         const {height} = postsContainer.current.getBoundingClientRect();
 
         // if the bottom of the device screen hit the bottom of the cointaner - some value;
-        if ((scrolled + deviceHeight) >= (containerY + height)) setPostsGroup(value => value + 1);
+        if ((scrolled + deviceHeight) >= (containerY + height - (deviceHeight * 0.02))) setPostsGroup(value => value + 1);
     }
 
     const groupLength = 3;
